@@ -1,0 +1,3215 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://127.0.0.1:3000/f2f-teamguessr.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./F2F 2025 TeamGuessr_files/___vscode_livepreview_injected_script"></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F2F 2025 TeamGuessr</title>
+    <link rel="stylesheet" href="./F2F 2025 TeamGuessr_files/leaflet.css">
+    <link rel="stylesheet" href="./F2F 2025 TeamGuessr_files/style.css">
+  <style>@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdh18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdo18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdg18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdv18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdj18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdi18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSds18S0xR41.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidh18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkido18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidg18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidv18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidj18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidi18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkids18S0xR41.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7qsDJB9cme_xc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7jsDJB9cme_xc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7rsDJB9cme_xc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7ksDJB9cme_xc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7osDJB9cme_xc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7psDJB9cme_xc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7nsDJB9cme.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdh18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdo18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdg18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdv18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdj18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdi18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCds18S0xR41.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdh18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdo18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdg18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdv18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdj18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdi18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSds18S0xR41.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydh18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydo18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydg18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydv18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydj18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydi18S0xR41YDw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklyds18S0xR41.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wmhdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wkxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wmxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wlBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wmBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wmRdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lujVj9_mf.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lujVj9_mf.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lujVj9_mf.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lujVj9_mf.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lujVj9_mf.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lujVj9_mf.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmhdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwkxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmhdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwkxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwlBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmBdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmRdu3cOWxy40.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.ZD1LzV_5hhnbdBzBCTeC {
+z-index: 65536;
+}
+
+.BBAoAg1q8YTH2NGsa7Ui {
+font-family: 'Source Sans Pro'
+}
+
+@keyframes aqjkdtZawN5lryW5flKx {
+  from {
+    transform:rotate(0deg)
+  }
+  to {
+    transform:rotate(360deg)
+  }
+}
+
+.qEYyC4J5veWyiLaz9gNP {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  transition: none;
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  vertical-align: baseline;
+  margin-bottom: 5.58px;
+  padding: 3px 18px;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  background-image: none;
+  border-radius: 4px;
+  border: 1px solid #646363;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px transparent;
+  color: #000;
+  transition: box-shadow ease-in-out .1s,background-color ease-in-out .1s;
+}
+
+.qEYyC4J5veWyiLaz9gNP svg {
+  width:1em;
+  height:1em;
+  vertical-align:middle
+}
+
+.qEYyC4J5veWyiLaz9gNP svg path:not(.ntvBF21SnsKwNa29Rg8A) {
+  transition:fill .2s ease-out;
+  fill:#666
+}
+
+
+.qEYyC4J5veWyiLaz9gNP svg circle.iy0BC5jhx6jMyzcvrLwf,
+.qEYyC4J5veWyiLaz9gNP svg path.iy0BC5jhx6jMyzcvrLwf{
+  fill:transparent;
+  stroke:#666
+}
+
+.qEYyC4J5veWyiLaz9gNP:last-child {
+  margin-right:0
+}
+
+.qEYyC4J5veWyiLaz9gNP svg {
+  min-width:1em;
+  margin-left:.2rem;
+  margin-right:.2rem
+}
+
+.qEYyC4J5veWyiLaz9gNP:hover,
+.qEYyC4J5veWyiLaz9gNP:focus,
+.qEYyC4J5veWyiLaz9gNP:focus-within,
+.qEYyC4J5veWyiLaz9gNP:active {
+  outline:none;
+  text-decoration:none;
+  color:#000;
+  background-color:#f7f7f7;
+  box-shadow:0 0 0 1px #5e34be;
+  text-decoration:none
+}
+
+.qEYyC4J5veWyiLaz9gNP:hover svg,
+.qEYyC4J5veWyiLaz9gNP:focus svg,
+.qEYyC4J5veWyiLaz9gNP:focus-within svg,
+.qEYyC4J5veWyiLaz9gNP:active svg {
+  width:1em;
+  height:1em;
+  vertical-align:middle
+}
+
+.qEYyC4J5veWyiLaz9gNP:hover svg path:not(.ntvBF21SnsKwNa29Rg8A),
+.qEYyC4J5veWyiLaz9gNP:focus svg path:not(.ntvBF21SnsKwNa29Rg8A),
+.qEYyC4J5veWyiLaz9gNP:focus-within svg path:not(.ntvBF21SnsKwNa29Rg8A),
+.qEYyC4J5veWyiLaz9gNP:active svg path:not(.ntvBF21SnsKwNa29Rg8A) {
+  transition:fill .2s ease-out;
+  fill:#000
+}
+
+.qEYyC4J5veWyiLaz9gNP:hover svg circle.iy0BC5jhx6jMyzcvrLwf,
+.qEYyC4J5veWyiLaz9gNP:hover svg path.iy0BC5jhx6jMyzcvrLwf,
+.qEYyC4J5veWyiLaz9gNP:focus svg circle.iy0BC5jhx6jMyzcvrLwf,
+.qEYyC4J5veWyiLaz9gNP:focus svg path.iy0BC5jhx6jMyzcvrLwf,
+.qEYyC4J5veWyiLaz9gNP:focus-within svg circle.iy0BC5jhx6jMyzcvrLwf,
+.qEYyC4J5veWyiLaz9gNP:focus-within svg path.iy0BC5jhx6jMyzcvrLwf,
+.qEYyC4J5veWyiLaz9gNP:active svg circle.iy0BC5jhx6jMyzcvrLwf,
+.qEYyC4J5veWyiLaz9gNP:active svg path.iy0BC5jhx6jMyzcvrLwf {
+  fill:transparent;
+  stroke:#000
+}
+
+.qEYyC4J5veWyiLaz9gNP:disabled {
+  cursor:not-allowed;
+  opacity:.8;
+  background-color:#fff;
+  box-shadow:0 0 0 1px transparent
+}
+
+.qEYyC4J5veWyiLaz9gNP+button,
+.qEYyC4J5veWyiLaz9gNP+.qEYyC4J5veWyiLaz9gNP {
+  margin-left:5.58px
+}
+.htXPkXdMWWcmr0_dul7A {
+  padding:0;
+  background-color:transparent;
+  border:0;
+  box-shadow:none;
+  color:#000
+}
+.htXPkXdMWWcmr0_dul7A:hover,
+.htXPkXdMWWcmr0_dul7A:focus,
+.htXPkXdMWWcmr0_dul7A:focus-within,
+.htXPkXdMWWcmr0_dul7A:active {
+  background-color:transparent;
+  border:0;
+  box-shadow:none;
+  color:#000;
+  text-decoration:underline
+}
+.htXPkXdMWWcmr0_dul7A:disabled {
+  text-decoration:none
+}
+.MvZ5MuRzqsBeDt5z0X1e svg {
+  margin-top: -5px;
+  margin-right:.75rem;
+  animation-name:aqjkdtZawN5lryW5flKx;
+  animation-duration:3s;
+  animation-iteration-count:infinite;
+  animation-timing-function:linear;
+  transform-origin:50% 50%
+}
+.MvZ5MuRzqsBeDt5z0X1e.Tz2rVjh6IjVdduJP08Qm svg use {
+  stroke:#fff
+}
+.ZChY5ShGlfvLluUVYdtA {
+  padding:9px 36px;
+  font-size:21.6px;
+  font-size:1.2rem
+}
+.L7kF1ZLpIeOYvvHdD7Dg {
+  padding:3.5px 7px;
+  font-size:14.4px;
+  font-size:.8rem
+}
+.c8FhE1WPTbl4j6Blh_Cw {
+  width:100%;
+  margin-left:0 !important
+}
+.Tz2rVjh6IjVdduJP08Qm {
+  border:0;
+  font-weight:300;
+  background-color:#5E33BF;
+  border:1px solid #5e34be;
+  box-shadow:0 0 0 1px transparent;
+  color:#fff
+}
+.Tz2rVjh6IjVdduJP08Qm svg {
+  width:1em;
+  height:1em;
+  vertical-align:middle
+}
+.Tz2rVjh6IjVdduJP08Qm svg path:not(.ntvBF21SnsKwNa29Rg8A) {
+  transition:fill .2s ease-out;
+  fill:#fff
+}
+.Tz2rVjh6IjVdduJP08Qm svg circle.iy0BC5jhx6jMyzcvrLwf,
+.Tz2rVjh6IjVdduJP08Qm svg path.iy0BC5jhx6jMyzcvrLwf {
+  fill:transparent;
+  stroke:#fff
+}
+.Tz2rVjh6IjVdduJP08Qm:hover,
+.Tz2rVjh6IjVdduJP08Qm:focus,
+.Tz2rVjh6IjVdduJP08Qm:focus-within,
+.Tz2rVjh6IjVdduJP08Qm:active {
+  color:#fff;
+  background-color:#6b40cc;
+  box-shadow:0 0 0 1px #5e34be
+}
+.Tz2rVjh6IjVdduJP08Qm:hover svg,
+.Tz2rVjh6IjVdduJP08Qm:focus svg,
+.Tz2rVjh6IjVdduJP08Qm:focus-within svg,
+.Tz2rVjh6IjVdduJP08Qm:active svg {
+  width:1em;
+  height:1em;
+  vertical-align:middle
+}
+.Tz2rVjh6IjVdduJP08Qm:hover svg path:not(.ntvBF21SnsKwNa29Rg8A),
+.Tz2rVjh6IjVdduJP08Qm:focus svg path:not(.ntvBF21SnsKwNa29Rg8A),
+.Tz2rVjh6IjVdduJP08Qm:focus-within svg path:not(.ntvBF21SnsKwNa29Rg8A),
+.Tz2rVjh6IjVdduJP08Qm:active svg path:not(.ntvBF21SnsKwNa29Rg8A) {
+  transition:fill .2s ease-out;
+  fill:#fff
+}
+.Tz2rVjh6IjVdduJP08Qm:hover svg circle.iy0BC5jhx6jMyzcvrLwf,
+.Tz2rVjh6IjVdduJP08Qm:hover svg path.iy0BC5jhx6jMyzcvrLwf,
+.Tz2rVjh6IjVdduJP08Qm:focus svg circle.iy0BC5jhx6jMyzcvrLwf,
+.Tz2rVjh6IjVdduJP08Qm:focus svg path.iy0BC5jhx6jMyzcvrLwf,
+.Tz2rVjh6IjVdduJP08Qm:focus-within svg circle.iy0BC5jhx6jMyzcvrLwf,
+.Tz2rVjh6IjVdduJP08Qm:focus-within svg path.iy0BC5jhx6jMyzcvrLwf,
+.Tz2rVjh6IjVdduJP08Qm:active svg circle.iy0BC5jhx6jMyzcvrLwf,
+.Tz2rVjh6IjVdduJP08Qm:active svg path.iy0BC5jhx6jMyzcvrLwf {
+  fill:transparent;
+  stroke:#fff
+}
+.Tz2rVjh6IjVdduJP08Qm:disabled {
+  background-color:#5E33BF;
+  box-shadow:0 0 0 1px transparent;
+  color:#fff
+}
+.K29Do4qZAslPSEk0asSZ {
+  min-height:auto;
+  width:1.75em;
+  height:1.75em;
+  margin:0 .5rem 0 0;
+  padding:0;
+  border:1px solid transparent;
+  border-radius:50%;
+  background-color:transparent;
+  box-shadow:none
+}
+.K29Do4qZAslPSEk0asSZ svg {
+  width:1em;
+  height:1em;
+  vertical-align:middle
+}
+.K29Do4qZAslPSEk0asSZ svg path:not(.ntvBF21SnsKwNa29Rg8A) {
+  transition:fill .2s ease-out;
+  fill:#666
+}
+.K29Do4qZAslPSEk0asSZ svg circle.iy0BC5jhx6jMyzcvrLwf,
+.K29Do4qZAslPSEk0asSZ svg path.iy0BC5jhx6jMyzcvrLwf {
+  fill:transparent;
+  stroke:#666
+}
+.K29Do4qZAslPSEk0asSZ:hover svg,
+.K29Do4qZAslPSEk0asSZ:focus svg,
+.K29Do4qZAslPSEk0asSZ:focus-within svg,
+.K29Do4qZAslPSEk0asSZ:active svg {
+  width:1em;
+  height:1em;
+  vertical-align:middle
+}
+.K29Do4qZAslPSEk0asSZ:hover svg path:not(.ntvBF21SnsKwNa29Rg8A),
+.K29Do4qZAslPSEk0asSZ:focus svg path:not(.ntvBF21SnsKwNa29Rg8A),
+.K29Do4qZAslPSEk0asSZ:focus-within svg path:not(.ntvBF21SnsKwNa29Rg8A),
+.K29Do4qZAslPSEk0asSZ:active svg path:not(.ntvBF21SnsKwNa29Rg8A) {
+  transition:fill .2s ease-out;
+  fill:#5e34be
+}
+.K29Do4qZAslPSEk0asSZ:hover svg circle.iy0BC5jhx6jMyzcvrLwf,
+.K29Do4qZAslPSEk0asSZ:hover svg path.iy0BC5jhx6jMyzcvrLwf,
+.K29Do4qZAslPSEk0asSZ:focus svg circle.iy0BC5jhx6jMyzcvrLwf,
+.K29Do4qZAslPSEk0asSZ:focus svg path.iy0BC5jhx6jMyzcvrLwf,
+.K29Do4qZAslPSEk0asSZ:focus-within svg circle.iy0BC5jhx6jMyzcvrLwf,
+.K29Do4qZAslPSEk0asSZ:focus-within svg path.iy0BC5jhx6jMyzcvrLwf,
+.K29Do4qZAslPSEk0asSZ:active svg circle.iy0BC5jhx6jMyzcvrLwf,
+.K29Do4qZAslPSEk0asSZ:active svg path.iy0BC5jhx6jMyzcvrLwf {
+  fill:transparent;
+  stroke:#5e34be
+}
+.K29Do4qZAslPSEk0asSZ:disabled {
+  opacity:1;
+  background-color:#fff;
+  box-shadow:none
+}
+.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm {
+  background-color:#5E33BF;
+  border:1px solid #e9eaed;
+  box-shadow:0 0 0 1px transparent;
+  color:#fff
+}
+.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm svg {
+  width:1em;
+  height:1em;
+  vertical-align:middle
+}
+.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm svg path:not(.ntvBF21SnsKwNa29Rg8A) {
+  transition:fill .2s ease-out;
+  fill:#fff
+}
+.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm svg circle.iy0BC5jhx6jMyzcvrLwf,
+.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm svg path.iy0BC5jhx6jMyzcvrLwf {
+  fill:transparent;
+  stroke:#fff
+}
+.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm:hover,
+.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm:focus,
+.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm:focus-within,
+.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm:active {
+  background-color:#6b40cc;
+  box-shadow:0 0 0 1px #e9eaed
+}
+
+@keyframes KG9mWh693CBdLSEsKEEw {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes aqjkdtZawN5lryW5flKx {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ZD1LzV_5hhnbdBzBCTeC {
+  z-index: 65536;
+}</style><style>.Yhs0neJe89LIyfkAJoxK {
+  overflow: visible;
+}
+
+.Yhs0neJe89LIyfkAJoxK:hover .ZhAn9j0umnIEipjxXmaw {
+  display: block;
+}
+
+.Ivj7JdNm5WGw6xA2l9yt {
+}
+
+.RA6W6tHqfGIgyq6FvHto {
+  background-color: #5e33bf !important;
+  color: #fff !important;
+  transform: translate3d(0, 0, 0) !important;
+  transition: background-color 0.2s ease-in !important;
+  cursor: pointer;
+}
+
+.RA6W6tHqfGIgyq6FvHto .df8AcRGrLBTeGlrI8Kpt svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.RA6W6tHqfGIgyq6FvHto .df8AcRGrLBTeGlrI8Kpt svg path:not(.MW1rWF7KNYwKqk4M7BZX) {
+  transition: fill 0.2s ease-out;
+  fill: #fff;
+}
+
+.RA6W6tHqfGIgyq6FvHto .df8AcRGrLBTeGlrI8Kpt svg circle.zgYLZOdQFmvl1k7yJoFd,
+.RA6W6tHqfGIgyq6FvHto .df8AcRGrLBTeGlrI8Kpt svg path.zgYLZOdQFmvl1k7yJoFd {
+  fill: transparent;
+  stroke: #fff;
+}
+
+.RA6W6tHqfGIgyq6FvHto:hover,
+.RA6W6tHqfGIgyq6FvHto:focus,
+.RA6W6tHqfGIgyq6FvHto:focus-within,
+.RA6W6tHqfGIgyq6FvHto:active {
+  background-color: #fff !important;
+  color: #5e33bf !important;
+  border: 1px solid #5e33bf !important;
+}
+
+.RA6W6tHqfGIgyq6FvHto:hover .df8AcRGrLBTeGlrI8Kpt svg,
+.RA6W6tHqfGIgyq6FvHto:focus .df8AcRGrLBTeGlrI8Kpt svg,
+.RA6W6tHqfGIgyq6FvHto:focus-within .df8AcRGrLBTeGlrI8Kpt svg,
+.RA6W6tHqfGIgyq6FvHto:active .df8AcRGrLBTeGlrI8Kpt svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.RA6W6tHqfGIgyq6FvHto:hover .df8AcRGrLBTeGlrI8Kpt svg path:not(.MW1rWF7KNYwKqk4M7BZX),
+.RA6W6tHqfGIgyq6FvHto:focus .df8AcRGrLBTeGlrI8Kpt svg path:not(.MW1rWF7KNYwKqk4M7BZX),
+.RA6W6tHqfGIgyq6FvHto:focus-within .df8AcRGrLBTeGlrI8Kpt svg path:not(.MW1rWF7KNYwKqk4M7BZX),
+.RA6W6tHqfGIgyq6FvHto:active .df8AcRGrLBTeGlrI8Kpt svg path:not(.MW1rWF7KNYwKqk4M7BZX) {
+  transition: fill 0.2s ease-out;
+  fill: #fff;
+}
+
+.RA6W6tHqfGIgyq6FvHto:hover .df8AcRGrLBTeGlrI8Kpt svg circle.zgYLZOdQFmvl1k7yJoFd,
+.RA6W6tHqfGIgyq6FvHto:hover .df8AcRGrLBTeGlrI8Kpt svg path.zgYLZOdQFmvl1k7yJoFd,
+.RA6W6tHqfGIgyq6FvHto:focus .df8AcRGrLBTeGlrI8Kpt svg circle.zgYLZOdQFmvl1k7yJoFd,
+.RA6W6tHqfGIgyq6FvHto:focus .df8AcRGrLBTeGlrI8Kpt svg path.zgYLZOdQFmvl1k7yJoFd,
+.RA6W6tHqfGIgyq6FvHto:focus-within .df8AcRGrLBTeGlrI8Kpt svg circle.zgYLZOdQFmvl1k7yJoFd,
+.RA6W6tHqfGIgyq6FvHto:focus-within .df8AcRGrLBTeGlrI8Kpt svg path.zgYLZOdQFmvl1k7yJoFd,
+.RA6W6tHqfGIgyq6FvHto:active .df8AcRGrLBTeGlrI8Kpt svg circle.zgYLZOdQFmvl1k7yJoFd,
+.RA6W6tHqfGIgyq6FvHto:active .df8AcRGrLBTeGlrI8Kpt svg path.zgYLZOdQFmvl1k7yJoFd {
+  fill: transparent;
+  stroke: #fff;
+}
+
+.c8ymIgiX1_X1KsA3H1tV {
+  background-color: #646363 !important;
+  color: #fff !important;
+  transform: translate3d(0, 0, 0) !important;
+  transition: background-color 0.2s ease-in !important;
+  cursor: pointer;
+}
+
+.c8ymIgiX1_X1KsA3H1tV .QzECqWHsQ0RPsvPBQcPg {
+  background-color: #9d9d9c !important;
+}
+
+.c8ymIgiX1_X1KsA3H1tV .QzECqWHsQ0RPsvPBQcPg svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.c8ymIgiX1_X1KsA3H1tV .QzECqWHsQ0RPsvPBQcPg svg path:not(.MW1rWF7KNYwKqk4M7BZX) {
+  transition: fill 0.2s ease-out;
+  fill: #fff;
+}
+
+.c8ymIgiX1_X1KsA3H1tV .QzECqWHsQ0RPsvPBQcPg svg circle.zgYLZOdQFmvl1k7yJoFd,
+.c8ymIgiX1_X1KsA3H1tV .QzECqWHsQ0RPsvPBQcPg svg path.zgYLZOdQFmvl1k7yJoFd {
+  fill: transparent;
+  stroke: #fff;
+}
+
+.c8ymIgiX1_X1KsA3H1tV:hover,
+.c8ymIgiX1_X1KsA3H1tV:focus,
+.c8ymIgiX1_X1KsA3H1tV:focus-within,
+.c8ymIgiX1_X1KsA3H1tV:active {
+  background-color: #9d9d9c !important;
+  color: #000 !important;
+}
+
+.c8ymIgiX1_X1KsA3H1tV:hover .QzECqWHsQ0RPsvPBQcPg svg,
+.c8ymIgiX1_X1KsA3H1tV:focus .QzECqWHsQ0RPsvPBQcPg svg,
+.c8ymIgiX1_X1KsA3H1tV:focus-within .QzECqWHsQ0RPsvPBQcPg svg,
+.c8ymIgiX1_X1KsA3H1tV:active .QzECqWHsQ0RPsvPBQcPg svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.c8ymIgiX1_X1KsA3H1tV:hover .QzECqWHsQ0RPsvPBQcPg svg path:not(.MW1rWF7KNYwKqk4M7BZX),
+.c8ymIgiX1_X1KsA3H1tV:focus .QzECqWHsQ0RPsvPBQcPg svg path:not(.MW1rWF7KNYwKqk4M7BZX),
+.c8ymIgiX1_X1KsA3H1tV:focus-within .QzECqWHsQ0RPsvPBQcPg svg path:not(.MW1rWF7KNYwKqk4M7BZX),
+.c8ymIgiX1_X1KsA3H1tV:active .QzECqWHsQ0RPsvPBQcPg svg path:not(.MW1rWF7KNYwKqk4M7BZX) {
+  transition: fill 0.2s ease-out;
+  fill: #fff;
+}
+
+.c8ymIgiX1_X1KsA3H1tV:hover .QzECqWHsQ0RPsvPBQcPg svg circle.zgYLZOdQFmvl1k7yJoFd,
+.c8ymIgiX1_X1KsA3H1tV:hover .QzECqWHsQ0RPsvPBQcPg svg path.zgYLZOdQFmvl1k7yJoFd,
+.c8ymIgiX1_X1KsA3H1tV:focus .QzECqWHsQ0RPsvPBQcPg svg circle.zgYLZOdQFmvl1k7yJoFd,
+.c8ymIgiX1_X1KsA3H1tV:focus .QzECqWHsQ0RPsvPBQcPg svg path.zgYLZOdQFmvl1k7yJoFd,
+.c8ymIgiX1_X1KsA3H1tV:focus-within .QzECqWHsQ0RPsvPBQcPg svg circle.zgYLZOdQFmvl1k7yJoFd,
+.c8ymIgiX1_X1KsA3H1tV:focus-within .QzECqWHsQ0RPsvPBQcPg svg path.zgYLZOdQFmvl1k7yJoFd,
+.c8ymIgiX1_X1KsA3H1tV:active .QzECqWHsQ0RPsvPBQcPg svg circle.zgYLZOdQFmvl1k7yJoFd,
+.c8ymIgiX1_X1KsA3H1tV:active .QzECqWHsQ0RPsvPBQcPg svg path.zgYLZOdQFmvl1k7yJoFd {
+  fill: transparent;
+  stroke: #fff;
+}</style><style>.zQ2oI6HGyJr41sAaSN6A {  
+  width: 195px !important;  
+}
+
+.CBjZQOrWgjhwajg6cNdt {
+  width: 210px !important;
+  margin-left:10px !important;
+}
+
+.yN40z2aRoGZzOKE8ARN3 {
+  position: absolute !important;
+  z-index: 9999999 !important;
+  height: 126px;
+  padding: 10px !important;
+  color: #111 !important;
+  background-color: #f0f0eb !important;
+  border-radius: 4px !important;  
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.3 !important;
+  -webkit-font-smoothing: antialiased;
+}
+.yN40z2aRoGZzOKE8ARN3 * {
+  font-family: inherit;
+}
+
+.zQ2oI6HGyJr41sAaSN6A:after {
+  content: "";
+  display: block !important;
+  position: absolute !important;
+  bottom: -5px !important;
+  left: 25% !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin-left: -3px !important;
+  border-top: 6px solid #f0f0eb !important;
+  border-left: 6px solid transparent !important;
+  border-right: 6px solid transparent !important;
+}
+
+.CBjZQOrWgjhwajg6cNdt:after {
+  content: "";
+  display: block !important;
+  position: absolute !important;
+  bottom: -10px !important;
+  left: 50% !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin-left: -3px !important;
+  border-top: 10px solid #f0f0eb !important;
+  border-left: 10px solid transparent !important;
+  border-right: 10px solid transparent !important;
+}
+
+.c22rusyRofQicH3i73oO {
+  margin: 0 0 5px;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: #111;
+}
+
+.MAtUQwoIbEYN6I2IW3iU {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #111;
+}
+.Dzpte9yA2frq_VJhi6CC {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.vCn6PTxk9sBIkF37FZ4Q {
+  display: flex !important;
+  align-items: center !important;
+  color: #111 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.6 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+.qHjXL9KCgUmignnlCgjt {
+  margin-right: 0.5rem !important;
+  margin-top: -3px !important;
+}
+
+.qHjXL9KCgUmignnlCgjt svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+.qHjXL9KCgUmignnlCgjt svg path:not(.zFF4AleNIF_4DQ6TA9Ze) {
+  transition: fill 0.2s ease-out;
+  fill: #646363;
+}
+
+.qHjXL9KCgUmignnlCgjt svg circle.Dh3ou9W2aVNVDeowSDkG,
+.qHjXL9KCgUmignnlCgjt svg path.Dh3ou9W2aVNVDeowSDkG {
+  fill: transparent;
+  stroke: #646363;
+}
+
+.c5TyDaoqniVfBZ_t4fl6 {
+  color: #111 !important;
+  font-weight: 700 !important;
+}
+
+.vD1sKbEy4K_sdAhPfoZX {
+  font-weight: 700 !important;
+}
+
+.c5TyDaoqniVfBZ_t4fl6 .qHjXL9KCgUmignnlCgjt svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+.c5TyDaoqniVfBZ_t4fl6
+  .qHjXL9KCgUmignnlCgjt
+  svg
+  path:not(.zFF4AleNIF_4DQ6TA9Ze) {
+  transition: fill 0.2s ease-out;
+  fill: #111;
+}
+
+.vD1sKbEy4K_sdAhPfoZX
+  .qHjXL9KCgUmignnlCgjt
+  svg
+  path:not(.zFF4AleNIF_4DQ6TA9Ze) {
+  transition: fill 0.2s ease-out;
+  fill: #fff;
+}
+
+.c5TyDaoqniVfBZ_t4fl6 .qHjXL9KCgUmignnlCgjt svg circle.Dh3ou9W2aVNVDeowSDkG,
+.c5TyDaoqniVfBZ_t4fl6 .qHjXL9KCgUmignnlCgjt svg path.Dh3ou9W2aVNVDeowSDkG {
+  fill: transparent;
+  stroke: #fff;
+}
+
+.kW147OB4sedNGu2d6rGT {
+}
+
+.kW147OB4sedNGu2d6rGT .qHjXL9KCgUmignnlCgjt circle {
+  animation: 1.4s ease-in-out infinite both Buowibv1_rtZ58hAVORO;
+  display: block;
+  fill: transparent;
+  stroke: #111;
+  stroke-linecap: round;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 280;
+  stroke-width: 10px;
+  transform-origin: 50% 50%;
+}
+
+
+</style><style>@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdh18S0xR41YDw.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdo18S0xR41YDw.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdg18S0xR41YDw.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdv18S0xR41YDw.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdj18S0xR41YDw.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSdi18S0xR41YDw.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZYokSds18S0xR41.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidh18S0xR41YDw.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkido18S0xR41YDw.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidg18S0xR41YDw.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidv18S0xR41YDw.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidj18S0xR41YDw.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidi18S0xR41YDw.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkids18S0xR41.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7qsDJB9cme_xc.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7jsDJB9cme_xc.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7rsDJB9cme_xc.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7ksDJB9cme_xc.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7osDJB9cme_xc.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7psDJB9cme_xc.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7nsDJB9cme.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdh18S0xR41YDw.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdo18S0xR41YDw.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdg18S0xR41YDw.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdv18S0xR41YDw.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdj18S0xR41YDw.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdi18S0xR41YDw.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCds18S0xR41.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdh18S0xR41YDw.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdo18S0xR41YDw.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdg18S0xR41YDw.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdv18S0xR41YDw.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdj18S0xR41YDw.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSdi18S0xR41YDw.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZclSds18S0xR41.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydh18S0xR41YDw.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydo18S0xR41YDw.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydg18S0xR41YDw.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydv18S0xR41YDw.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydj18S0xR41YDw.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklydi18S0xR41YDw.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:italic;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZklyds18S0xR41.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wmhdu3cOWxy40.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wkxdu3cOWxy40.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wmxdu3cOWxy40.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wlBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wmBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wmRdu3cOWxy40.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:200;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wlxdu3cOWxw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhdu3cOWxy40.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxdu3cOWxy40.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxdu3cOWxy40.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRdu3cOWxy40.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu3cOWxw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lujVj9_mf.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lujVj9_mf.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lujVj9_mf.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lujVj9_mf.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lujVj9_mf.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lujVj9_mf.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhdu3cOWxy40.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxdu3cOWxy40.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxdu3cOWxy40.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRdu3cOWxy40.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu3cOWxw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmhdu3cOWxy40.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwkxdu3cOWxy40.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmxdu3cOWxy40.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRdu3cOWxy40.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu3cOWxw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmhdu3cOWxy40.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwkxdu3cOWxy40.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmxdu3cOWxy40.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwlBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmBdu3cOWxy40.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwmRdu3cOWxy40.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Source Sans Pro";font-style:normal;font-weight:900;font-display:swap;src:url(https://fonts.gstatic.com/s/sourcesanspro/v22/6xKydSBYKcSV-LCoeQqfX1RYOo3iu4nwlxdu3cOWxw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}.ZD1LzV_5hhnbdBzBCTeC{z-index:65536}.BBAoAg1q8YTH2NGsa7Ui{font-family:"Source Sans Pro"}@keyframes aqjkdtZawN5lryW5flKx{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.qEYyC4J5veWyiLaz9gNP{display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:center;transition:none;position:relative;overflow:hidden;transform:translate3d(0, 0, 0);vertical-align:baseline;margin-bottom:5.58px;padding:3px 18px;font-family:"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:400;line-height:1.5;text-align:center;cursor:pointer;letter-spacing:.01em;text-decoration:none;background-image:none;border-radius:4px;border:1px solid #646363;background-color:#fff;box-shadow:0 0 0 1px rgba(0,0,0,0);color:#000;transition:box-shadow ease-in-out .1s,background-color ease-in-out .1s}.qEYyC4J5veWyiLaz9gNP svg{width:1em;height:1em;vertical-align:middle}.qEYyC4J5veWyiLaz9gNP svg path:not(.ntvBF21SnsKwNa29Rg8A){transition:fill .2s ease-out;fill:#666}.qEYyC4J5veWyiLaz9gNP svg circle.iy0BC5jhx6jMyzcvrLwf,.qEYyC4J5veWyiLaz9gNP svg path.iy0BC5jhx6jMyzcvrLwf{fill:rgba(0,0,0,0);stroke:#666}.qEYyC4J5veWyiLaz9gNP:last-child{margin-right:0}.qEYyC4J5veWyiLaz9gNP svg{min-width:1em;margin-left:.2rem;margin-right:.2rem}.qEYyC4J5veWyiLaz9gNP:hover,.qEYyC4J5veWyiLaz9gNP:focus,.qEYyC4J5veWyiLaz9gNP:focus-within,.qEYyC4J5veWyiLaz9gNP:active{outline:none;text-decoration:none;color:#000;background-color:#f7f7f7;box-shadow:0 0 0 1px #5e34be;text-decoration:none}.qEYyC4J5veWyiLaz9gNP:hover svg,.qEYyC4J5veWyiLaz9gNP:focus svg,.qEYyC4J5veWyiLaz9gNP:focus-within svg,.qEYyC4J5veWyiLaz9gNP:active svg{width:1em;height:1em;vertical-align:middle}.qEYyC4J5veWyiLaz9gNP:hover svg path:not(.ntvBF21SnsKwNa29Rg8A),.qEYyC4J5veWyiLaz9gNP:focus svg path:not(.ntvBF21SnsKwNa29Rg8A),.qEYyC4J5veWyiLaz9gNP:focus-within svg path:not(.ntvBF21SnsKwNa29Rg8A),.qEYyC4J5veWyiLaz9gNP:active svg path:not(.ntvBF21SnsKwNa29Rg8A){transition:fill .2s ease-out;fill:#000}.qEYyC4J5veWyiLaz9gNP:hover svg circle.iy0BC5jhx6jMyzcvrLwf,.qEYyC4J5veWyiLaz9gNP:hover svg path.iy0BC5jhx6jMyzcvrLwf,.qEYyC4J5veWyiLaz9gNP:focus svg circle.iy0BC5jhx6jMyzcvrLwf,.qEYyC4J5veWyiLaz9gNP:focus svg path.iy0BC5jhx6jMyzcvrLwf,.qEYyC4J5veWyiLaz9gNP:focus-within svg circle.iy0BC5jhx6jMyzcvrLwf,.qEYyC4J5veWyiLaz9gNP:focus-within svg path.iy0BC5jhx6jMyzcvrLwf,.qEYyC4J5veWyiLaz9gNP:active svg circle.iy0BC5jhx6jMyzcvrLwf,.qEYyC4J5veWyiLaz9gNP:active svg path.iy0BC5jhx6jMyzcvrLwf{fill:rgba(0,0,0,0);stroke:#000}.qEYyC4J5veWyiLaz9gNP:disabled{cursor:not-allowed;opacity:.8;background-color:#fff;box-shadow:0 0 0 1px rgba(0,0,0,0)}.qEYyC4J5veWyiLaz9gNP+button,.qEYyC4J5veWyiLaz9gNP+.qEYyC4J5veWyiLaz9gNP{margin-left:5.58px}.htXPkXdMWWcmr0_dul7A{padding:0;background-color:rgba(0,0,0,0);border:0;box-shadow:none;color:#000}.htXPkXdMWWcmr0_dul7A:hover,.htXPkXdMWWcmr0_dul7A:focus,.htXPkXdMWWcmr0_dul7A:focus-within,.htXPkXdMWWcmr0_dul7A:active{background-color:rgba(0,0,0,0);border:0;box-shadow:none;color:#000;text-decoration:underline}.htXPkXdMWWcmr0_dul7A:disabled{text-decoration:none}.MvZ5MuRzqsBeDt5z0X1e svg{margin-top:-5px;margin-right:.75rem;animation-name:aqjkdtZawN5lryW5flKx;animation-duration:3s;animation-iteration-count:infinite;animation-timing-function:linear;transform-origin:50% 50%}.MvZ5MuRzqsBeDt5z0X1e.Tz2rVjh6IjVdduJP08Qm svg use{stroke:#fff}.ZChY5ShGlfvLluUVYdtA{padding:9px 36px;font-size:21.6px;font-size:1.2rem}.L7kF1ZLpIeOYvvHdD7Dg{padding:3.5px 7px;font-size:14.4px;font-size:.8rem}.c8FhE1WPTbl4j6Blh_Cw{width:100%;margin-left:0 !important}.Tz2rVjh6IjVdduJP08Qm{border:0;font-weight:300;background-color:#5e33bf;border:1px solid #5e34be;box-shadow:0 0 0 1px rgba(0,0,0,0);color:#fff}.Tz2rVjh6IjVdduJP08Qm svg{width:1em;height:1em;vertical-align:middle}.Tz2rVjh6IjVdduJP08Qm svg path:not(.ntvBF21SnsKwNa29Rg8A){transition:fill .2s ease-out;fill:#fff}.Tz2rVjh6IjVdduJP08Qm svg circle.iy0BC5jhx6jMyzcvrLwf,.Tz2rVjh6IjVdduJP08Qm svg path.iy0BC5jhx6jMyzcvrLwf{fill:rgba(0,0,0,0);stroke:#fff}.Tz2rVjh6IjVdduJP08Qm:hover,.Tz2rVjh6IjVdduJP08Qm:focus,.Tz2rVjh6IjVdduJP08Qm:focus-within,.Tz2rVjh6IjVdduJP08Qm:active{color:#fff;background-color:#6b40cc;box-shadow:0 0 0 1px #5e34be}.Tz2rVjh6IjVdduJP08Qm:hover svg,.Tz2rVjh6IjVdduJP08Qm:focus svg,.Tz2rVjh6IjVdduJP08Qm:focus-within svg,.Tz2rVjh6IjVdduJP08Qm:active svg{width:1em;height:1em;vertical-align:middle}.Tz2rVjh6IjVdduJP08Qm:hover svg path:not(.ntvBF21SnsKwNa29Rg8A),.Tz2rVjh6IjVdduJP08Qm:focus svg path:not(.ntvBF21SnsKwNa29Rg8A),.Tz2rVjh6IjVdduJP08Qm:focus-within svg path:not(.ntvBF21SnsKwNa29Rg8A),.Tz2rVjh6IjVdduJP08Qm:active svg path:not(.ntvBF21SnsKwNa29Rg8A){transition:fill .2s ease-out;fill:#fff}.Tz2rVjh6IjVdduJP08Qm:hover svg circle.iy0BC5jhx6jMyzcvrLwf,.Tz2rVjh6IjVdduJP08Qm:hover svg path.iy0BC5jhx6jMyzcvrLwf,.Tz2rVjh6IjVdduJP08Qm:focus svg circle.iy0BC5jhx6jMyzcvrLwf,.Tz2rVjh6IjVdduJP08Qm:focus svg path.iy0BC5jhx6jMyzcvrLwf,.Tz2rVjh6IjVdduJP08Qm:focus-within svg circle.iy0BC5jhx6jMyzcvrLwf,.Tz2rVjh6IjVdduJP08Qm:focus-within svg path.iy0BC5jhx6jMyzcvrLwf,.Tz2rVjh6IjVdduJP08Qm:active svg circle.iy0BC5jhx6jMyzcvrLwf,.Tz2rVjh6IjVdduJP08Qm:active svg path.iy0BC5jhx6jMyzcvrLwf{fill:rgba(0,0,0,0);stroke:#fff}.Tz2rVjh6IjVdduJP08Qm:disabled{background-color:#5e33bf;box-shadow:0 0 0 1px rgba(0,0,0,0);color:#fff}.K29Do4qZAslPSEk0asSZ{min-height:auto;width:1.75em;height:1.75em;margin:0 .5rem 0 0;padding:0;border:1px solid rgba(0,0,0,0);border-radius:50%;background-color:rgba(0,0,0,0);box-shadow:none}.K29Do4qZAslPSEk0asSZ svg{width:1em;height:1em;vertical-align:middle}.K29Do4qZAslPSEk0asSZ svg path:not(.ntvBF21SnsKwNa29Rg8A){transition:fill .2s ease-out;fill:#666}.K29Do4qZAslPSEk0asSZ svg circle.iy0BC5jhx6jMyzcvrLwf,.K29Do4qZAslPSEk0asSZ svg path.iy0BC5jhx6jMyzcvrLwf{fill:rgba(0,0,0,0);stroke:#666}.K29Do4qZAslPSEk0asSZ:hover svg,.K29Do4qZAslPSEk0asSZ:focus svg,.K29Do4qZAslPSEk0asSZ:focus-within svg,.K29Do4qZAslPSEk0asSZ:active svg{width:1em;height:1em;vertical-align:middle}.K29Do4qZAslPSEk0asSZ:hover svg path:not(.ntvBF21SnsKwNa29Rg8A),.K29Do4qZAslPSEk0asSZ:focus svg path:not(.ntvBF21SnsKwNa29Rg8A),.K29Do4qZAslPSEk0asSZ:focus-within svg path:not(.ntvBF21SnsKwNa29Rg8A),.K29Do4qZAslPSEk0asSZ:active svg path:not(.ntvBF21SnsKwNa29Rg8A){transition:fill .2s ease-out;fill:#5e34be}.K29Do4qZAslPSEk0asSZ:hover svg circle.iy0BC5jhx6jMyzcvrLwf,.K29Do4qZAslPSEk0asSZ:hover svg path.iy0BC5jhx6jMyzcvrLwf,.K29Do4qZAslPSEk0asSZ:focus svg circle.iy0BC5jhx6jMyzcvrLwf,.K29Do4qZAslPSEk0asSZ:focus svg path.iy0BC5jhx6jMyzcvrLwf,.K29Do4qZAslPSEk0asSZ:focus-within svg circle.iy0BC5jhx6jMyzcvrLwf,.K29Do4qZAslPSEk0asSZ:focus-within svg path.iy0BC5jhx6jMyzcvrLwf,.K29Do4qZAslPSEk0asSZ:active svg circle.iy0BC5jhx6jMyzcvrLwf,.K29Do4qZAslPSEk0asSZ:active svg path.iy0BC5jhx6jMyzcvrLwf{fill:rgba(0,0,0,0);stroke:#5e34be}.K29Do4qZAslPSEk0asSZ:disabled{opacity:1;background-color:#fff;box-shadow:none}.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm{background-color:#5e33bf;border:1px solid #e9eaed;box-shadow:0 0 0 1px rgba(0,0,0,0);color:#fff}.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm svg{width:1em;height:1em;vertical-align:middle}.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm svg path:not(.ntvBF21SnsKwNa29Rg8A){transition:fill .2s ease-out;fill:#fff}.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm svg circle.iy0BC5jhx6jMyzcvrLwf,.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm svg path.iy0BC5jhx6jMyzcvrLwf{fill:rgba(0,0,0,0);stroke:#fff}.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm:hover,.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm:focus,.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm:focus-within,.K29Do4qZAslPSEk0asSZ.Tz2rVjh6IjVdduJP08Qm:active{background-color:#6b40cc;box-shadow:0 0 0 1px #e9eaed}@keyframes KG9mWh693CBdLSEsKEEw{0%{transform:rotateZ(0deg)}100%{transform:rotateZ(360deg)}}@keyframes aqjkdtZawN5lryW5flKx{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.ZD1LzV_5hhnbdBzBCTeC{z-index:65536}</style><style>.O2kKYom4PJdnrcnGyfli{z-index:65536}.vqLLjXCvIZqFf6By7FsC{margin:0px !important;padding:0px !important}.D14sb1esRO00iZ1nebmr{position:fixed;padding:0px;margin:0px;width:250px;height:100px;box-shadow:none;margin:0;padding:0;display:flex;flex-direction:column;bottom:30px;left:0;z-index:9999999999999}.D14sb1esRO00iZ1nebmr.jmxllJPgW9QEseF_vRoS{bottom:90px}.ussejiMsgWzhgro3ajrg{bottom:80px !important;left:20px !important}.LiGTdyntXC8pa1XtEx0l{border-top-left-radius:30px !important;border-bottom-left-radius:30px !important}.SNO5yrb7NobAstipiMDb{height:100px;width:250px;left:0px;bottom:0px;box-shadow:none;margin:0px;border:0px;background-color:rgba(0,0,0,0) !important;overflow:hidden}.aDFGVZWO3T4Y2VPKu1IJ{display:block;margin-left:-8px}.hCym1FzCCgnchmEHLh2m{bottom:0px;left:0px;width:245px;height:80px;z-index:2000;margin:0;background-color:rgba(0,0,0,0);box-shadow:none;transform:translateX(-155px)}.YyRq9ewDY2IoRu54yZUi{display:flex;align-items:center;justify-content:flex-end;position:fixed;left:0px;width:220px;height:60px;padding-left:15px;background-color:#646363;color:#fff;border-top-right-radius:30px;border-bottom-right-radius:30px;transition:all .2s ease-in;cursor:pointer}.suMsnHlxitgjuMG9mk9c{}.RF3Ft4wMCSGJSNMh4BQf{flex-grow:1;padding-right:20px;line-height:1.1;text-align:center;transition:opacity .2s ease-in;color:#fff;opacity:1}.TRRuEGZkYLlovFGRV4Bg{height:60px;margin-right:5px;margin-top:7px;border-radius:50%}.nmH3eZaEDNZYzltAf3I9{height:60px;margin-right:5px;margin-top:7px;border-radius:50%}.WLHFcMAIg7lJLH6HZFnr{width:60px;height:60px;margin-right:5px;margin-top:15px;border-radius:50%}._9rvR6bGxpo9OdTnXTR1{transition:transform .2s ease-in;transform:translateX(-155px)}._rPZrbFgvMZOpS5lclxw{transition:transform .2s ease-in;transform:translateX(0)}.L75gelpYh4_q7uSDTb2x{transition:transform .5s ease-out;transform:translateX(-260px)}.mlJ8rgJkvB_9abQfz6BZ{border:2px solid rgba(0,0,0,0);border-left:0;background-color:#5e33bf;border-left:0;font-size:22px}.mlJ8rgJkvB_9abQfz6BZ:hover{background-color:#5e33bf}.mlJ8rgJkvB_9abQfz6BZ .RF3Ft4wMCSGJSNMh4BQf{opacity:1}.lWkUu_3zoMartWQEOtNJ .RF3Ft4wMCSGJSNMh4BQf{opacity:0}.TLjRZPoo5DaC8kofv5i8 .RF3Ft4wMCSGJSNMh4BQf{opacity:1}.ZbdpEJU6Zi9G8AWLuw2d{transition:transform .2s ease-in;transform:translateX(-162.5px)}.B48hMquTcZ958Ijv64UB{opacity:.8;box-shadow:none;font-size:18px}.TLjRZPoo5DaC8kofv5i8{opacity:1;box-shadow:0 2px 4px 0 rgba(0,0,0,.5);background:#646363;font-size:18px}.PutPRtxMCwBXTIlJ1ERX{transition:transform .2s ease-in;transform:translateX(0)}.MZZI6CipqCZYqNKOU41z{display:none;position:absolute;width:20px;height:20px !important;color:#111;background-color:#f0f0eb;border:1px solid #111;border-radius:20px;line-height:20px;font-size:16px;top:0;right:0;z-index:4000;cursor:pointer}.MZZI6CipqCZYqNKOU41z:hover{display:block}.BYG4Q2WQqiz9_B9pi8bI{position:relative;left:-1px;top:-2px}</style><style>.g2yPL5PuP5YcxDAm6OHT {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 19999;
+}
+.TKXFYjyTT7BRVXk2l6uF a {
+    color: #5e33bf;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+  .TKXFYjyTT7BRVXk2l6uF a svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+  .TKXFYjyTT7BRVXk2l6uF a svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #5e33bf;
+  }
+  .TKXFYjyTT7BRVXk2l6uF a svg circle.gZCekxKuewhQhlBZDuJQ,
+  .TKXFYjyTT7BRVXk2l6uF a svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #5e33bf;
+  }
+  .TKXFYjyTT7BRVXk2l6uF a:hover,
+  .TKXFYjyTT7BRVXk2l6uF a:focus,
+  .TKXFYjyTT7BRVXk2l6uF a:focus-within,
+  .TKXFYjyTT7BRVXk2l6uF a:active {
+    color: #5e33bf;
+  }
+  .TKXFYjyTT7BRVXk2l6uF a:hover svg,
+  .TKXFYjyTT7BRVXk2l6uF a:focus svg,
+  .TKXFYjyTT7BRVXk2l6uF a:focus-within svg,
+  .TKXFYjyTT7BRVXk2l6uF a:active svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+  .TKXFYjyTT7BRVXk2l6uF a:hover svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .TKXFYjyTT7BRVXk2l6uF a:focus svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .TKXFYjyTT7BRVXk2l6uF a:focus-within svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .TKXFYjyTT7BRVXk2l6uF a:active svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #06512c;
+  }
+  .TKXFYjyTT7BRVXk2l6uF a:hover svg circle.gZCekxKuewhQhlBZDuJQ,
+  .TKXFYjyTT7BRVXk2l6uF a:hover svg path.gZCekxKuewhQhlBZDuJQ,
+  .TKXFYjyTT7BRVXk2l6uF a:focus svg circle.gZCekxKuewhQhlBZDuJQ,
+  .TKXFYjyTT7BRVXk2l6uF a:focus svg path.gZCekxKuewhQhlBZDuJQ,
+  .TKXFYjyTT7BRVXk2l6uF a:focus-within svg circle.gZCekxKuewhQhlBZDuJQ,
+  .TKXFYjyTT7BRVXk2l6uF a:focus-within svg path.gZCekxKuewhQhlBZDuJQ,
+  .TKXFYjyTT7BRVXk2l6uF a:active svg circle.gZCekxKuewhQhlBZDuJQ,
+  .TKXFYjyTT7BRVXk2l6uF a:active svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #fff;
+  }
+  .TKXFYjyTT7BRVXk2l6uF a:not([href]) {
+    opacity: 0.8;
+    cursor: not-allowed;
+    color: #fff !important;
+  }
+  .TKXFYjyTT7BRVXk2l6uF a.o53g2xMKPHItiQ_Pa50z {
+    color: #fff !important;
+  }
+  
+  .TKXFYjyTT7BRVXk2l6uF > :first-child {
+    margin-top: 0;
+  }
+  .TKXFYjyTT7BRVXk2l6uF > :last-child {
+    margin-bottom: 0;
+  }
+  
+  .N8JKKJ9GMp6XB25A3VK8 {
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image: radial-gradient(150px at bottom 60px left 290px, transparent 99%, black 100%);
+    mask-image: radial-gradient(150px at bottom 60px left 290px, transparent 99%, black 100%);
+  }
+  
+  .WKlsVvzGQcaszJKQigkg {
+    background-color: rgba(255, 255, 255, 0.8);
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  
+  .NFIyN4kDgBJX4_hCTjAo {
+    -webkit-mask-image: radial-gradient(350px at bottom 60px left 40px, transparent 99%, black 100%);
+    mask-image: radial-gradient(350px at bottom 60px left 40px, transparent 99%, black 100%);
+  }
+  
+  .xsQ_pBk79MDxlAtWKQ1i {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 2.5em;
+    -webkit-transition: none;
+    transition: none;
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    vertical-align: middle;
+    padding: 6px 18px;
+    font-family: "Clarivate", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #f3f9f6;
+    background-color: #f3f9f6;
+    color: #4a494a;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V svg,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #b0afb0;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #b0afb0;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:hover,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus-within,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:active,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:hover,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus-within,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:active {
+    outline: none;
+    text-decoration: none;
+    color: #4a494a;
+    background-color: #e9f4ee;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:hover svg,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus svg,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus-within svg,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:active svg,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:hover svg,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus svg,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus-within svg,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:active svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:hover svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus-within svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:active svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:hover svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus-within svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:active svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #4a494a;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:hover svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:hover svg path.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus svg path.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus-within svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:focus-within svg path.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:active svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:active svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:hover svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:hover svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus-within svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:focus-within svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:active svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:active svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #5e33bf;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V:disabled,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .pOV6BFePmeRb9zzOJ09V svg,
+  .YqtWBHxfSeuDDI4tBtJq .pOV6BFePmeRb9zzOJ09V svg {
+    margin-right: 0.75rem;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .ZFFejwogdbRltBtqgc3n svg,
+  .YqtWBHxfSeuDDI4tBtJq .ZFFejwogdbRltBtqgc3n svg {
+    margin-right: 0;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb {
+    min-height: auto;
+    width: 1.75em;
+    height: 1.75em;
+    margin: 0 0.5rem 0 0;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:hover,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus-within,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:active,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:hover,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus-within,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:active {
+    border: 1px solid #f3f9f6;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .SlU_AzpYh4lpS86_AlqH,
+  .YqtWBHxfSeuDDI4tBtJq .SlU_AzpYh4lpS86_AlqH {
+    width: 100%;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z {
+    border: 0;
+    background-color: #f3f9f6;
+    color: #fff;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z svg,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #fff;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #fff;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:hover,
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:focus,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:hover,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:focus {
+    color: #fff;
+    background-color: #5e33bf;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:hover svg,
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:focus svg,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:hover svg,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:focus svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:hover svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:focus svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:hover svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:focus svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #fff;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:hover svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:hover svg path.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:focus svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .o53g2xMKPHItiQ_Pa50z:focus svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:hover svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:hover svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:focus svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .o53g2xMKPHItiQ_Pa50z:focus svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #fff;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .jrqth2DBy5Tfn6bolRG3,
+  .YqtWBHxfSeuDDI4tBtJq .jrqth2DBy5Tfn6bolRG3 {
+    padding: 9px 36px;
+    font-size: 21.6px;
+    font-size: 1.2rem;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb {
+    min-height: auto;
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0 0.5rem 0 0;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb svg,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb svg {
+    width: 1.25em;
+    height: 1.25em;
+    vertical-align: middle;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #5e33bf;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #5e33bf;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:hover,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus-within,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:active,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:hover,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus-within,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:active {
+    border: 1px solid #5e33bf;
+    background-color: #e9f4ee;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:hover svg,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus svg,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus-within svg,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:active svg,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:hover svg,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus svg,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus-within svg,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:active svg {
+    width: 1.25em;
+    height: 1.25em;
+    vertical-align: middle;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:hover svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus-within svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:active svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:hover svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus-within svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:active svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #5e33bf;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:hover svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:hover svg path.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus svg path.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus-within svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:focus-within svg path.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:active svg circle.gZCekxKuewhQhlBZDuJQ,
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:active svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:hover svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:hover svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus-within svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:focus-within svg path.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:active svg circle.gZCekxKuewhQhlBZDuJQ,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:active svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #5e33bf;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb:last-child,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb:last-child {
+    margin-right: 0;
+  }
+  #fj4Y2VBM_jUdoqg8vxxE .x_CwlUpfr3F8cJGqU9wb svg,
+  .YqtWBHxfSeuDDI4tBtJq .x_CwlUpfr3F8cJGqU9wb svg {
+    margin-right: 0;
+  }
+  
+  .WKlsVvzGQcaszJKQigkg {
+    background-color: rgba(255, 255, 255, 0.8);
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .YqtWBHxfSeuDDI4tBtJq,
+  .y2eGkYbULQmLiDmmsaE_,
+  .G7McxXXrgjal0gygY7go,
+  .cA8Idbs6OA0BSmKw9Tam {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Clarivate", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .YqtWBHxfSeuDDI4tBtJq *:before,
+  .y2eGkYbULQmLiDmmsaE_ *:before,
+  .G7McxXXrgjal0gygY7go *:before,
+  .cA8Idbs6OA0BSmKw9Tam *:before,
+  .YqtWBHxfSeuDDI4tBtJq *:after,
+  .y2eGkYbULQmLiDmmsaE_ *:after,
+  .G7McxXXrgjal0gygY7go *:after,
+  .cA8Idbs6OA0BSmKw9Tam *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .eHXvC2pkWtoHh3fOdygK {
+    overflow: hidden !important;
+  }
+  
+  .N7GBO0t9WTd0OozV15Vh {
+    z-index: 70000000 !important;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: #dadada;
+    opacity: 0.8;
+  }
+  
+  .xNhUX6MpP3eU4apTCdOF {
+    position: relative;
+    z-index: 80000000 !important;
+  }
+  
+  .YqtWBHxfSeuDDI4tBtJq {
+    position: fixed;
+    bottom: 30px;
+    left: 320px;
+    width: 350px;
+    z-index: 80000000;
+    padding: 15px;
+    background-color: #5e33bf;
+    border: 3px solid #5e33bf;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
+  }
+  .YqtWBHxfSeuDDI4tBtJq:before,
+  .YqtWBHxfSeuDDI4tBtJq:after {
+    content: "";
+    position: absolute;
+  }
+  
+  .wP_d6sVNjv41TuoIOqgu {
+    top: 20vh;
+    left: 50vw;
+    margin-left: -175px;
+  }
+  
+  .y2eGkYbULQmLiDmmsaE_ {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: fixed;
+    min-width: 350px;
+    min-height: 350px;
+    z-index: 80000000;
+    padding: 15px;
+    background-color: #fff;
+    border: 10px dashed #696969;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-align: center;
+  }
+  .y2eGkYbULQmLiDmmsaE_ .MU1OWZXYSl7cGLHsourz {
+    padding-right: 0;
+  }
+  
+  .P8xmsluQbsK9kCB8J4TB:before {
+    top: 50%;
+    right: -50px;
+    width: 50px;
+    margin-top: -5px;
+    border-top: 5px solid #5e33bf;
+    border-bottom: 5px solid #5e33bf;
+  }
+  .P8xmsluQbsK9kCB8J4TB:after {
+    top: 50%;
+    right: -80px;
+    height: 0;
+    width: 0;
+    margin-top: -20px;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid #5e33bf;
+  }
+  
+  .G6JUSg1GIC3pcwn4LtwJ:before {
+    top: 25px;
+    right: -50px;
+    width: 50px;
+    border-top: 5px solid #5e33bf;
+    border-bottom: 5px solid #5e33bf;
+  }
+  .G6JUSg1GIC3pcwn4LtwJ:after {
+    top: 10px;
+    right: -80px;
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid #5e33bf;
+  }
+  
+  .TSVTVmbeKDsx1uaA3jwg:before {
+    bottom: 25px;
+    right: -50px;
+    width: 50px;
+    border-top: 5px solid #5e33bf;
+    border-bottom: 5px solid #5e33bf;
+  }
+  .TSVTVmbeKDsx1uaA3jwg:after {
+    bottom: 10px;
+    right: -80px;
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid #5e33bf;
+  }
+  
+  .lXK6keKCXOgkCYRWTuuw:before {
+    top: 50%;
+    left: -50px;
+    width: 50px;
+    margin-top: -5px;
+    border-top: 5px solid #5e33bf;
+    border-bottom: 5px solid #5e33bf;
+  }
+  .lXK6keKCXOgkCYRWTuuw:after {
+    top: 50%;
+    left: -80px;
+    height: 0;
+    width: 0;
+    margin-top: -20px;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 30px solid #5e33bf;
+  }
+  
+  .ziKSzAZaZuS7hitu2X8Z:before {
+    top: 25px;
+    left: -50px;
+    width: 50px;
+    border-top: 5px solid #5e33bf;
+    border-bottom: 5px solid #5e33bf;
+  }
+  .ziKSzAZaZuS7hitu2X8Z:after {
+    top: 10px;
+    left: -80px;
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 30px solid #5e33bf;
+  }
+  
+  .quK2DZCe63wsbgp9iUm4:before {
+    bottom: 25px;
+    left: -50px;
+    width: 50px;
+    border-top: 5px solid #5e33bf;
+    border-bottom: 5px solid #5e33bf;
+  }
+  .quK2DZCe63wsbgp9iUm4:after {
+    bottom: 10px;
+    left: -80px;
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 30px solid #5e33bf;
+  }
+  
+  .GrMWkdgGakDmpReMdXtx:before {
+    top: -50px;
+    left: 50%;
+    height: 50px;
+    margin-left: -5px;
+    border-left: 5px solid #5e33bf;
+    border-right: 5px solid #5e33bf;
+  }
+  .GrMWkdgGakDmpReMdXtx:after {
+    left: 50%;
+    top: -80px;
+    height: 0;
+    width: 0;
+    margin-left: -20px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid #5e33bf;
+  }
+  
+  .YksVyuEMbXSg025JadDh:before {
+    left: 25px;
+    top: -50px;
+    height: 50px;
+    border-left: 5px solid #5e33bf;
+    border-right: 5px solid #5e33bf;
+  }
+  .YksVyuEMbXSg025JadDh:after {
+    left: 10px;
+    top: -80px;
+    height: 0;
+    width: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid #5e33bf;
+  }
+  
+  .CTXY9eKXSOcPsREchYI2:before {
+    right: 25px;
+    top: -50px;
+    height: 50px;
+    border-left: 5px solid #5e33bf;
+    border-right: 5px solid #5e33bf;
+  }
+  .CTXY9eKXSOcPsREchYI2:after {
+    right: 10px;
+    top: -80px;
+    height: 0;
+    width: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid #5e33bf;
+  }
+  
+  .mV5XjFYui13hlKYiF9fz:before {
+    bottom: -50px;
+    left: 50%;
+    height: 50px;
+    margin-left: -5px;
+    border-left: 5px solid #5e33bf;
+    border-right: 5px solid #5e33bf;
+  }
+  .mV5XjFYui13hlKYiF9fz:after {
+    left: 50%;
+    bottom: -80px;
+    height: 0;
+    width: 0;
+    margin-left: -20px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #5e33bf;
+  }
+  
+  .jlXUNrOMfrz8QPtWwi9D:before {
+    bottom: -50px;
+    left: 25px;
+    height: 50px;
+    border-left: 5px solid #5e33bf;
+    border-right: 5px solid #5e33bf;
+  }
+  .jlXUNrOMfrz8QPtWwi9D:after {
+    left: 10px;
+    bottom: -80px;
+    height: 0;
+    width: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #5e33bf;
+  }
+  
+  .JeoJI1NdjwsQC_qBgQws:before {
+    bottom: -50px;
+    right: 25px;
+    height: 50px;
+    border-left: 5px solid #5e33bf;
+    border-right: 5px solid #5e33bf;
+  }
+  .JeoJI1NdjwsQC_qBgQws:after {
+    right: 10px;
+    bottom: -80px;
+    height: 0;
+    width: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 30px solid #5e33bf;
+  }
+  
+  .MU1OWZXYSl7cGLHsourz {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding-right: 85px;
+    font-size: 26px;
+    line-height: 1.25;
+  }
+  
+  .G7McxXXrgjal0gygY7go {
+    min-width: 30px;
+    height: 40px;
+    margin-right: 0.75rem;
+  }
+  .G7McxXXrgjal0gygY7go svg {
+    max-height: 40px;
+    height: auto;
+    width: auto;
+  }
+  
+  .mRKSYTEhLTxmKLYCNnX9 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    min-height: 40px;
+  }
+  
+  .cA8Idbs6OA0BSmKw9Tam {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    margin: 0;
+    padding: 1rem;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 400;
+    text-decoration: none;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+  }
+  .cA8Idbs6OA0BSmKw9Tam svg {
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  .cA8Idbs6OA0BSmKw9Tam svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #fff;
+  }
+  .cA8Idbs6OA0BSmKw9Tam svg circle.gZCekxKuewhQhlBZDuJQ,
+  .cA8Idbs6OA0BSmKw9Tam svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #696969;
+  }
+  .cA8Idbs6OA0BSmKw9Tam:hover,
+  .cA8Idbs6OA0BSmKw9Tam:focus,
+  .cA8Idbs6OA0BSmKw9Tam:focus-within,
+  .cA8Idbs6OA0BSmKw9Tam:active {
+    color: #dadada;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .cA8Idbs6OA0BSmKw9Tam:hover svg,
+  .cA8Idbs6OA0BSmKw9Tam:focus svg,
+  .cA8Idbs6OA0BSmKw9Tam:focus-within svg,
+  .cA8Idbs6OA0BSmKw9Tam:active svg {
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  .cA8Idbs6OA0BSmKw9Tam:hover svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .cA8Idbs6OA0BSmKw9Tam:focus svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .cA8Idbs6OA0BSmKw9Tam:focus-within svg path:not(.UEpjZcO6H4w0RvC9Kcye),
+  .cA8Idbs6OA0BSmKw9Tam:active svg path:not(.UEpjZcO6H4w0RvC9Kcye) {
+    -webkit-transition: fill 0.2s ease-out;
+    transition: fill 0.2s ease-out;
+    fill: #dadada;
+  }
+  .cA8Idbs6OA0BSmKw9Tam:hover svg circle.gZCekxKuewhQhlBZDuJQ,
+  .cA8Idbs6OA0BSmKw9Tam:hover svg path.gZCekxKuewhQhlBZDuJQ,
+  .cA8Idbs6OA0BSmKw9Tam:focus svg circle.gZCekxKuewhQhlBZDuJQ,
+  .cA8Idbs6OA0BSmKw9Tam:focus svg path.gZCekxKuewhQhlBZDuJQ,
+  .cA8Idbs6OA0BSmKw9Tam:focus-within svg circle.gZCekxKuewhQhlBZDuJQ,
+  .cA8Idbs6OA0BSmKw9Tam:focus-within svg path.gZCekxKuewhQhlBZDuJQ,
+  .cA8Idbs6OA0BSmKw9Tam:active svg circle.gZCekxKuewhQhlBZDuJQ,
+  .cA8Idbs6OA0BSmKw9Tam:active svg path.gZCekxKuewhQhlBZDuJQ {
+    fill: transparent;
+    stroke: #5e33bf;
+  }
+  
+  .TKXFYjyTT7BRVXk2l6uF {
+    margin: 15px 0;
+    line-height: 1.25;
+    background: #5e33bf;
+    color: #fff;
+  }
+  .TKXFYjyTT7BRVXk2l6uF:first-of-type,
+  .TKXFYjyTT7BRVXk2l6uF:first-child {
+    margin-top: 0;
+  }
+  .TKXFYjyTT7BRVXk2l6uF:last-child {
+    margin-bottom: 0;
+  }
+  
+  .NnI3UXnyndFcINeMIp0o {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .FV8g2jL10G1UB_eAf9BA {
+    text-align: right;
+  }
+  .FV8g2jL10G1UB_eAf9BA a{
+   color: white;
+   text-decoration: underline;
+  }
+  .FV8g2jL10G1UB_eAf9BA a:hover{
+    color: white;
+    text-decoration: none;
+   }
+  
+  .wwyWCr_3HEEc_JqAydbV {
+    text-align: center;
+  }
+  .z4zawF9GdEBCaptUBX5p {
+    cursor: pointer;
+  }
+  .JcejyBv9JYPL8TJLsJFI {
+    cursor: pointer;
+  }
+  .Mo7gxI5NC9YwGrb2VuBI {
+    position: absolute;
+    width: 273px;
+    bottom: 120px;
+    left: 155px;
+    padding: 15px;
+    border-radius: 2px;
+    background-color: rgba(48, 55, 61, 1);
+    z-index: 500000000;
+  }
+  
+  .h5vXAMG8g9yvOW1B6wro {
+    left: 15px;
+    bottom: 100px;
+  }
+  
+  .h5vXAMG8g9yvOW1B6wro::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -15px;
+    left: 15px;
+    height: 0;
+    border-top: 15px solid #30373d;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+  }
+  
+  .IAiRh1I0k5egyOBwu5xu {
+    bottom: 111px;
+    left: 283px;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: rgba(48, 55, 61, 1);
+  }
+  
+  .SH95mwXWE4rR88NI9kdw {
+    font-family: "Clarivate";
+    text-align: left;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  
+  /* Content visibility */
+  .JDTc_LYE4hywcP2UrMj1 {
+    display: none;
+    height: 100%;
+    -webkit-animation-duration: 500ms;
+    animation-duration: 500ms;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .JDTc_LYE4hywcP2UrMj1.xt3prUvhYpXaDTATSaqi {
+    display: block;
+    -webkit-animation-name: cyDGHsYvrKbP8e_GTG2d;
+    animation-name: cyDGHsYvrKbP8e_GTG2d;
+  }
+  
+  @keyframes cyDGHsYvrKbP8e_GTG2d {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  #p23dTdp5Vjnb1kKXw0Pm {
+    color: #fff;
+  }
+  
+  #p23dTdp5Vjnb1kKXw0Pm:hover {
+    color: #dadada;
+    text-decoration: none;
+  }
+  </style></head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Fridge to Fridge 2025 Teamguessr</h1>
+        <p>Upload photos, set locations &amp; years, then challenge yourself!</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" onclick="showTab(&#39;admin&#39;)">
+          📋 Admin Panel
+        </button>
+        <button class="tab" onclick="showTab(&#39;play&#39;)">🎮 Play Game</button>
+        <button class="tab" onclick="showTab(&#39;sets&#39;)">📚 Game Sets</button>
+      </div>
+
+      <!-- Admin Panel -->
+      <div id="admin" class="tab-content">
+        <div class="admin-section">
+          <h3>📷 Add New Picture</h3>
+          <div class="form-group">
+            <label for="imageUpload">Upload Image:</label>
+            <input type="file" id="imageUpload" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label for="imageYear">Year (1900-2024):</label>
+            <input type="number" id="imageYear" min="1900" max="2024" placeholder="e.g., 1995">
+          </div>
+          <div class="form-group">
+            <label for="imageTitle">Title/Description:</label>
+            <input type="text" id="imageTitle" placeholder="e.g., Times Square in the 90s">
+          </div>
+          <div class="form-group">
+            <label>Click on the map to set location:</label>
+            <div id="adminMap" style="height: 600px; border-radius: 8px; border: 2px solid rgb(226, 232, 240); position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="./F2F 2025 TeamGuessr_files/1.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(125px, 169px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/1(1).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(381px, 169px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/0.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(125px, -87px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/0(1).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(381px, -87px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/2.png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(125px, 425px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/2(1).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(381px, 425px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/1(2).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-131px, 169px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/1(3).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(637px, 169px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/0(2).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-131px, -87px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/0(3).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(637px, -87px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/2(2).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-131px, 425px, 0px); opacity: 1;"><img alt="" src="./F2F 2025 TeamGuessr_files/2(3).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(637px, 425px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(301.494px, 385.004px, 0px) scale(2);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="http://127.0.0.1:3000/f2f-teamguessr.html#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="http://127.0.0.1:3000/f2f-teamguessr.html#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © OpenStreetMap contributors</div></div></div></div>
+          </div>
+          <div style="margin-top: 15px">
+            <span id="coordsDisplay">Coordinates: Click on map to select</span>
+          </div>
+          <button class="btn" onclick="addPicture()">➕ Add Picture</button>
+        </div>
+
+        <div class="admin-section">
+          <h3>💾 Save Game Set</h3>
+          <div class="form-group">
+            <label for="gameSetName">Game Set Name:</label>
+            <input type="text" id="gameSetName" placeholder="e.g., Vintage Cities">
+          </div>
+          <div class="form-group">
+            <label for="gameSetPictures">Select 5 Pictures for Game Set:</label>
+            <select id="gameSetPictures" multiple="" size="5"></select>
+            <small style="color: #666">Hold Ctrl/Cmd to select multiple. Select exactly 5
+              pictures.</small>
+          </div>
+          <button class="btn btn-success" onclick="saveGameSet()">
+            💾 Save Game Set
+          </button>
+        </div>
+
+        <div class="admin-section">
+          <h3>💾 Data Management</h3>
+          <div class="form-group">
+            <p style="color: #666; margin-bottom: 15px">
+              Save your game data to a local file to avoid localStorage quota
+              limits.
+            </p>
+            <button class="btn" onclick="saveData()">
+              💾 Save Data to File
+            </button>
+            <button class="btn btn-secondary" onclick="loadData()">
+              📁 Load Data from File
+            </button>
+            <button class="btn btn-warning" onclick="clearAllData()">
+              🗑️ Clear All Data
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h3>📸 Current Pictures</h3>
+          <div id="picturesList" class="picture-list"><p style="color: #666; text-align: center;">No pictures added yet.</p></div>
+        </div>
+      </div>
+
+      <!-- Play Game -->
+      <div id="play" class="tab-content hidden">
+        <div class="game-container">
+          <div id="gameStart">
+            <h3>🎯 Start New Game</h3>
+            <p>
+              Select 6 pictures to create a random game, or choose a saved game
+              set.
+            </p>
+            <button class="btn" onclick="startRandomGame()">
+              🎲 Random Game (6 pictures)
+            </button>
+          </div>
+
+          <div id="gamePlay" class="hidden">
+            <div class="round-info">
+              <span id="roundCounter">Round 1 of 5</span>
+              <span id="totalScore" style="float: right">Total Score: 0</span>
+            </div>
+
+            <img id="gameImage" class="game-image" alt="Guess this location and year!">
+
+            <div class="guess-container">
+              <div class="location-guess">
+                <h4>🗺️ Guess the Location</h4>
+                <div id="map" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="position: relative;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="./F2F 2025 TeamGuessr_files/1(1).png" class="leaflet-tile" style="width: 256px; height: 256px; transform: translate3d(-45px, -129px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"></div><div class="leaflet-pane leaflet-marker-pane"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(301.494px, 385.004px, 0px) scale(2);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="http://127.0.0.1:3000/f2f-teamguessr.html#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="http://127.0.0.1:3000/f2f-teamguessr.html#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © OpenStreetMap contributors</div></div></div></div>
+                <p style="margin-top: 10px; color: #666">
+                  Click on the map to make your guess
+                </p>
+                <div class="year-guess">
+                  <h4>📅 Guess the Year (1990-2025)</h4>
+                  <input class="year-guess-input" type="number" id="yearGuess" min="1900" max="2024" placeholder="Enter year">
+                </div>
+              </div>
+            </div>
+
+            <button class="btn" onclick="submitGuess()" id="submitBtn">
+              ✅ Submit Guess
+            </button>
+
+            <div id="roundResults" class="results hidden">
+              <h4>📊 Round Results</h4>
+              <div id="roundScore"></div>
+              <div id="roundDetails"></div>
+              <button class="btn" onclick="nextRound()" id="nextBtn">
+                ➡️ Next Round
+              </button>
+            </div>
+          </div>
+
+          <div id="gameEnd" class="hidden">
+            <div class="score-display">
+              🏆 Final Score: <span id="finalScore">0</span> / 50000
+            </div>
+            <div class="results">
+              <h4>📈 Game Summary</h4>
+              <div id="gameSummary"></div>
+            </div>
+            <button class="btn" onclick="restartGame()">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Sets -->
+      <div id="sets" class="tab-content hidden">
+        <h3>📚 Saved Game Sets</h3>
+        <div id="gameSetsList"><p style="color: #666; text-align: center;">No game sets saved yet.</p></div>
+      </div>
+    </div>
+
+    <script src="./F2F 2025 TeamGuessr_files/leaflet.js"></script>
+    <script>
+      // Global variables
+      let pictures = [];
+      let gameSets = [];
+      let currentGame = null;
+      let currentRound = 0;
+      let totalScore = 0;
+      let gameResults = [];
+      let adminMap, gameMap;
+      let selectedCoords = null;
+      let guessMarker = null;
+
+      // Initialize the app
+      async function init() {
+        await loadData();
+        initMaps();
+        updatePicturesList();
+        updateGameSetsList();
+        updateGameSetPictures();
+      }
+
+      // Data persistence
+      async function saveData() {
+        const data = {
+          pictures: pictures,
+          gameSets: gameSets,
+        };
+
+        try {
+          // Try to use File System Access API (modern browsers)
+          if ("showSaveFilePicker" in window) {
+            const handle = await window.showSaveFilePicker({
+              suggestedName: "timeguessr_data.json",
+              types: [
+                {
+                  description: "JSON File",
+                  accept: { "application/json": [".json"] },
+                },
+              ],
+            });
+
+            const writable = await handle.createWritable();
+            await writable.write(JSON.stringify(data, null, 2));
+            await writable.close();
+
+            console.log("Data saved to file successfully");
+            alert("✅ Data saved to file successfully!");
+            return;
+          }
+        } catch (error) {
+          console.log(
+            "File System Access API failed, falling back to download"
+          );
+        }
+
+        // Fallback: Download as file
+        const blob = new Blob([JSON.stringify(data, null, 2)], {
+          type: "application/json",
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "timeguessr_data.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        // Also save to localStorage as backup
+        try {
+          localStorage.setItem("timeguessr_data", JSON.stringify(data));
+          alert("✅ Data saved as file download and to localStorage!");
+        } catch (e) {
+          console.warn("localStorage quota exceeded, data saved as file only");
+          alert(
+            "✅ Data saved as file download! (localStorage quota exceeded)"
+          );
+        }
+      }
+
+      async function loadData() {
+        try {
+          // Try to use File System Access API (modern browsers)
+          if ("showOpenFilePicker" in window) {
+            try {
+              const [fileHandle] = await window.showOpenFilePicker({
+                types: [
+                  {
+                    description: "JSON File",
+                    accept: { "application/json": [".json"] },
+                  },
+                ],
+              });
+
+              const file = await fileHandle.getFile();
+              const contents = await file.text();
+              const data = JSON.parse(contents);
+
+              pictures = data.pictures || [];
+              gameSets = data.gameSets || [];
+              console.log("Data loaded from file successfully");
+              alert(
+                `✅ Data loaded from file successfully!\nLoaded ${pictures.length} pictures and ${gameSets.length} game sets.`
+              );
+
+              // Update UI
+              updatePicturesList();
+              updateGameSetsList();
+              updateGameSetPictures();
+              return;
+            } catch (error) {
+              console.log(
+                "File loading cancelled or failed, trying localStorage"
+              );
+            }
+          }
+        } catch (error) {
+          console.log(
+            "File System Access API not available, using localStorage"
+          );
+        }
+
+        // Fallback to localStorage
+        const saved = localStorage.getItem("timeguessr_data");
+        if (saved) {
+          const data = JSON.parse(saved);
+          pictures = data.pictures || [];
+          gameSets = data.gameSets || [];
+          alert(
+            `✅ Data loaded from localStorage!\nLoaded ${pictures.length} pictures and ${gameSets.length} game sets.`
+          );
+        } else {
+          alert("ℹ️ No saved data found in localStorage.");
+        }
+      }
+
+      // Initialize maps
+      function initMaps() {
+        // Admin map
+        adminMap = L.map("adminMap").setView([40.7128, -74.006], 2);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap contributors",
+        }).addTo(adminMap);
+
+        adminMap.on("click", function (e) {
+          selectedCoords = e.latlng;
+          document.getElementById(
+            "coordsDisplay"
+          ).textContent = `Coordinates: ${e.latlng.lat.toFixed(
+            6
+          )}, ${e.latlng.lng.toFixed(6)}`;
+
+          if (adminMap.marker) {
+            adminMap.removeLayer(adminMap.marker);
+          }
+          adminMap.marker = L.marker(e.latlng).addTo(adminMap);
+        });
+
+        // Game map
+        gameMap = L.map("map").setView([40.7128, -74.006], 2);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap contributors",
+        }).addTo(gameMap);
+
+        gameMap.on("click", function (e) {
+          if (guessMarker) {
+            gameMap.removeLayer(guessMarker);
+          }
+          guessMarker = L.marker(e.latlng).addTo(gameMap);
+        });
+      }
+
+      // Tab functionality
+      function showTab(tabName) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((tab) => tab.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((content) => content.classList.add("hidden"));
+
+        event.target.classList.add("active");
+        document.getElementById(tabName).classList.remove("hidden");
+
+        // Refresh maps when switching tabs
+        setTimeout(() => {
+          if (tabName === "admin") {
+            adminMap.invalidateSize();
+          } else if (tabName === "play") {
+            gameMap.invalidateSize();
+          }
+        }, 100);
+      }
+
+      // Picture management
+      function addPicture() {
+        const fileInput = document.getElementById("imageUpload");
+        const year = parseInt(document.getElementById("imageYear").value);
+        const title = document.getElementById("imageTitle").value;
+
+        if (!fileInput.files[0] || !year || !title || !selectedCoords) {
+          alert("Please fill all fields and select a location on the map.");
+          return;
+        }
+
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const picture = {
+            id: Date.now(),
+            title: title,
+            year: year,
+            lat: selectedCoords.lat,
+            lng: selectedCoords.lng,
+            image: e.target.result,
+          };
+
+          pictures.push(picture);
+          saveData().then(() => {
+            updatePicturesList();
+            updateGameSetPictures();
+          });
+
+          // Clear form
+          fileInput.value = "";
+          document.getElementById("imageYear").value = "";
+          document.getElementById("imageTitle").value = "";
+          selectedCoords = null;
+          document.getElementById("coordsDisplay").textContent =
+            "Coordinates: Click on map to select";
+          if (adminMap.marker) {
+            adminMap.removeLayer(adminMap.marker);
+          }
+
+          alert("Picture added successfully!");
+        };
+
+        reader.readAsDataURL(file);
+      }
+
+      function deletePicture(id) {
+        if (confirm("Are you sure you want to delete this picture?")) {
+          pictures = pictures.filter((p) => p.id !== id);
+          saveData().then(() => {
+            updatePicturesList();
+            updateGameSetPictures();
+          });
+        }
+      }
+
+      function updatePicturesList() {
+        const container = document.getElementById("picturesList");
+        container.innerHTML = "";
+
+        if (pictures.length === 0) {
+          container.innerHTML =
+            '<p style="color: #666; text-align: center;">No pictures added yet.</p>';
+          return;
+        }
+
+        pictures.forEach((picture) => {
+          const item = document.createElement("div");
+          item.className = "picture-item";
+          item.innerHTML = `
+                    <img src="${picture.image}" alt="${
+            picture.title
+          }" class="picture-preview">
+                    <div class="picture-info">
+                        <strong>${picture.title}</strong><br>
+                        Year: ${picture.year}<br>
+                        Location: ${picture.lat.toFixed(
+                          4
+                        )}, ${picture.lng.toFixed(4)}
+                    </div>
+                    <button class="btn btn-danger" onclick="deletePicture(${
+                      picture.id
+                    })">🗑️ Delete</button>
+                `;
+          container.appendChild(item);
+        });
+      }
+
+      function updateGameSetPictures() {
+        const select = document.getElementById("gameSetPictures");
+        select.innerHTML = "";
+
+        pictures.forEach((picture) => {
+          const option = document.createElement("option");
+          option.value = picture.id;
+          option.textContent = `${picture.title} (${picture.year})`;
+          select.appendChild(option);
+        });
+      }
+
+      // Game Set management
+      function saveGameSet() {
+        const name = document.getElementById("gameSetName").value;
+        const selectedPictures = Array.from(
+          document.getElementById("gameSetPictures").selectedOptions
+        );
+
+        if (!name || selectedPictures.length !== 5) {
+          alert("Please enter a name and select exactly 5 pictures.");
+          return;
+        }
+
+        const gameSet = {
+          id: Date.now(),
+          name: name,
+          pictureIds: selectedPictures.map((option) => parseInt(option.value)),
+        };
+
+        gameSets.push(gameSet);
+        saveData().then(() => {
+          updateGameSetsList();
+        });
+
+        document.getElementById("gameSetName").value = "";
+        document.getElementById("gameSetPictures").selectedIndex = -1;
+
+        alert("Game set saved successfully!");
+      }
+
+      function deleteGameSet(id) {
+        if (confirm("Are you sure you want to delete this game set?")) {
+          gameSets = gameSets.filter((gs) => gs.id !== id);
+          saveData().then(() => {
+            updateGameSetsList();
+          });
+        }
+      }
+
+      function updateGameSetsList() {
+        const container = document.getElementById("gameSetsList");
+        container.innerHTML = "";
+
+        if (gameSets.length === 0) {
+          container.innerHTML =
+            '<p style="color: #666; text-align: center;">No game sets saved yet.</p>';
+          return;
+        }
+
+        gameSets.forEach((gameSet) => {
+          const item = document.createElement("div");
+          item.className = "game-set-item";
+          item.innerHTML = `
+                    <h4>${gameSet.name}</h4>
+                    <p>5 pictures • Click to play</p>
+                    <div style="margin-top: 10px;">
+                        <button class="btn" onclick="playGameSet(${gameSet.id})">🎮 Play</button>
+                        <button class="btn btn-danger" onclick="deleteGameSet(${gameSet.id})">🗑️ Delete</button>
+                    </div>
+                `;
+          container.appendChild(item);
+        });
+      }
+
+      // Game logic
+      function startRandomGame() {
+        if (pictures.length < 5) {
+          alert("You need at least 5 pictures to start a game.");
+          return;
+        }
+
+        const shuffled = [...pictures].sort(() => 0.5 - Math.random());
+        currentGame = shuffled.slice(0, 5);
+        initGame();
+      }
+
+      function playGameSet(gameSetId) {
+        const gameSet = gameSets.find((gs) => gs.id === gameSetId);
+        if (!gameSet) return;
+
+        currentGame = gameSet.pictureIds
+          .map((id) => pictures.find((p) => p.id === id))
+          .filter((p) => p);
+
+        if (currentGame.length !== 5) {
+          alert(
+            "Some pictures in this game set are missing. Please recreate the game set."
+          );
+          return;
+        }
+
+        showTab("play");
+        setTimeout(() => gameMap.invalidateSize(), 100);
+        initGame();
+      }
+
+      function initGame() {
+        currentRound = 0;
+        totalScore = 0;
+        gameResults = [];
+
+        document.getElementById("gameStart").classList.add("hidden");
+        document.getElementById("gamePlay").classList.remove("hidden");
+        document.getElementById("gameEnd").classList.add("hidden");
+
+        loadRound();
+      }
+
+      function loadRound() {
+        const picture = currentGame[currentRound];
+
+        document.getElementById("roundCounter").textContent = `Round ${
+          currentRound + 1
+        } of 5`;
+        document.getElementById(
+          "totalScore"
+        ).textContent = `Total Score: ${totalScore}`;
+        document.getElementById("gameImage").src = picture.image;
+        document.getElementById("yearGuess").value = "";
+
+        // Clear previous guess marker
+        if (guessMarker) {
+          gameMap.removeLayer(guessMarker);
+          guessMarker = null;
+        }
+
+        // Reset game map view
+        gameMap.setView([40.7128, -74.006], 2);
+
+        document.getElementById("roundResults").classList.add("hidden");
+        document.getElementById("submitBtn").style.display = "inline-block";
+      }
+
+      function submitGuess() {
+        const yearGuess = parseInt(document.getElementById("yearGuess").value);
+
+        if (!yearGuess || !guessMarker) {
+          alert(
+            "Please enter a year and click on the map to make your location guess."
+          );
+          return;
+        }
+
+        const picture = currentGame[currentRound];
+        const guessCoords = guessMarker.getLatLng();
+
+        // Calculate scores using specified algorithms
+        const yearDiff = Math.abs(yearGuess - picture.year);
+
+        // Year score adjusted for modern photos (2002+) - more forgiving for small errors
+        let yearScore;
+        if (yearDiff === 0) {
+          yearScore = 5000;
+        } else if (yearDiff === 1) {
+          yearScore = 4600; // Only 100 point penalty instead of 50
+        } else if (yearDiff === 2) {
+          yearScore = 4300; // More gradual decline
+        } else if (yearDiff === 3) {
+          yearScore = 4000;
+        } else if (yearDiff === 4) {
+          yearScore = 3700;
+        } else if (yearDiff === 5) {
+          yearScore = 3400; // Better than original 3900
+        } else if (yearDiff >= 6 && yearDiff <= 8) {
+          yearScore = 2400; // Extended range, better score
+        } else if (yearDiff >= 9 && yearDiff <= 12) {
+          yearScore = 2000; // Better than original 2500
+        } else if (yearDiff >= 13 && yearDiff <= 18) {
+          yearScore = 2000; // Extended range
+        } else {
+          yearScore = 0; // Better than original 1000, extended range
+        }
+
+        const distance = calculateDistance(
+          picture.lat,
+          picture.lng,
+          guessCoords.lat,
+          guessCoords.lng
+        );
+        const distanceInMeters = distance * 1000; // Convert km to meters like in the original
+
+        // Distance score using the exact logic from the original code
+        let distanceScore;
+        if (distanceInMeters <= 50) {
+          distanceScore = 5000;
+        } else if (distanceInMeters > 50 && distanceInMeters <= 1000) {
+          distanceScore = 5000 - distanceInMeters * 0.02; // less than 1km min 4980
+        } else if (distanceInMeters > 1000 && distanceInMeters <= 5000) {
+          distanceScore = 4980 - distanceInMeters * 0.016; // less than 5km min 4900
+        } else if (distanceInMeters > 5000 && distanceInMeters <= 100000) {
+          distanceScore = 4900 - distanceInMeters * 0.004; // less than 100km min 4500
+        } else if (distanceInMeters > 100000 && distanceInMeters <= 1000000) {
+          distanceScore = 4500 - distanceInMeters * 0.001; // less than 1000km min 3500
+        } else if (distanceInMeters > 1000000 && distanceInMeters <= 2000000) {
+          distanceScore = 3500 - distanceInMeters * 0.0005; // less than 2000km min 2500
+        } else if (distanceInMeters > 2000000 && distanceInMeters <= 3000000) {
+          distanceScore = 2500 - distanceInMeters * 0.00033333; // less than 3000km min 1500
+        } else if (distanceInMeters > 3000000 && distanceInMeters <= 6000000) {
+          distanceScore = 1500 - distanceInMeters * 0.0002; // less than 6000km min 250
+        } else {
+          distanceScore = 12;
+        }
+
+        const roundScore = Math.round(yearScore + distanceScore);
+        totalScore += roundScore;
+
+        // Store round result
+        gameResults.push({
+          picture: picture,
+          yearGuess: yearGuess,
+          locationGuess: guessCoords,
+          yearScore: Math.round(yearScore),
+          distanceScore: Math.round(distanceScore),
+          roundScore: roundScore,
+          distance: distance,
+          yearDiff: yearDiff,
+        });
+
+        // Show results
+        showRoundResults(
+          picture,
+          guessCoords,
+          yearGuess,
+          roundScore,
+          yearScore,
+          distanceScore,
+          distance,
+          yearDiff
+        );
+      }
+
+      function showRoundResults(
+        picture,
+        guessCoords,
+        yearGuess,
+        roundScore,
+        yearScore,
+        distanceScore,
+        distance,
+        yearDiff
+      ) {
+        document.getElementById("submitBtn").style.display = "none";
+
+        // Add actual location marker
+        const actualMarker = L.marker([picture.lat, picture.lng], {
+          icon: L.icon({
+            iconUrl:
+              "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDOC4xMyAyIDUgNS4xMyA1IDlDNSAxNC4yNSAxMiAyMiAxMiAyMkMxMiAyMiAxOSAxNC4yNSAxOSA5QzE5IDUuMTMgMTUuODcgMiAxMiAyWk0xMiAxMS41QzEwLjYyIDExLjUgOS41IDEwLjM4IDkuNSA5QzkuNSA3LjYyIDEwLjYyIDYuNSAxMiA2LjVDMTMuMzggNi41IDE0LjUgNy42MiAxNC41IDlDMTQuNSAxMC4zOCAxMy4zOCAxMS41IDEyIDExLjVaIiBmaWxsPSIjRkYwMDAwIi8+Cjwvc3ZnPgo=",
+            iconSize: [24, 24],
+            iconAnchor: [12, 24],
+          }),
+        }).addTo(gameMap);
+
+        // Fit map to show both markers
+        const group = L.featureGroup([guessMarker, actualMarker]);
+        gameMap.fitBounds(group.getBounds(), { padding: [50, 50] });
+
+        const resultsHtml = `
+                <div class="score-display">Round Score: ${roundScore} / 10000</div>
+                <div class="result-item">
+                    <span><strong>Your Year Guess:</strong> ${yearGuess}</span>
+                    <span><strong>Actual Year:</strong> ${picture.year}</span>
+                </div>
+                <div class="result-item">
+                    <span><strong>Year Difference:</strong> ${yearDiff} years</span>
+                    <span><strong>Year Score:</strong> ${Math.round(
+                      yearScore
+                    )} / 5000</span>
+                </div>
+                <div class="result-item">
+                    <span><strong>Distance:</strong> ${distance.toFixed(
+                      0
+                    )} km</span>
+                    <span><strong>Distance Score:</strong> ${Math.round(
+                      distanceScore
+                    )} / 5000</span>
+                </div>
+                <div style="margin-top: 15px; padding: 10px; background: #e6f7ff; border-radius: 5px;">
+                    <strong>${picture.title}</strong><br>
+                    Year: ${picture.year} | Location: ${picture.lat.toFixed(
+          4
+        )}, ${picture.lng.toFixed(4)}
+                </div>
+            `;
+
+        document.getElementById("roundScore").innerHTML = resultsHtml;
+        document.getElementById("roundResults").classList.remove("hidden");
+
+        if (currentRound === 4) {
+          document.getElementById("nextBtn").textContent = "🏁 Finish Game";
+        }
+      }
+
+      function nextRound() {
+        // Remove the actual location marker
+        gameMap.eachLayer((layer) => {
+          if (layer instanceof L.Marker && layer !== guessMarker) {
+            gameMap.removeLayer(layer);
+          }
+        });
+
+        currentRound++;
+
+        if (currentRound >= 5) {
+          endGame();
+        } else {
+          loadRound();
+        }
+      }
+
+      function endGame() {
+        document.getElementById("gamePlay").classList.add("hidden");
+        document.getElementById("gameEnd").classList.remove("hidden");
+
+        document.getElementById("finalScore").textContent = totalScore;
+
+        let summaryHtml = "";
+        gameResults.forEach((result, index) => {
+          summaryHtml += `
+                    <div class="result-item">
+                        <div>
+                            <strong>Round ${index + 1}: ${
+            result.picture.title
+          }</strong><br>
+                            Year: ${result.yearGuess} vs ${
+            result.picture.year
+          } (${result.yearDiff} years off)<br>
+                            Distance: ${result.distance.toFixed(0)} km
+                        </div>
+                        <div>
+                            <strong>${result.roundScore} points</strong><br>
+                            Year: ${result.yearScore} | Location: ${
+            result.distanceScore
+          }
+                        </div>
+                    </div>
+                `;
+        });
+
+        document.getElementById("gameSummary").innerHTML = summaryHtml;
+      }
+
+      function restartGame() {
+        currentGame = null;
+        currentRound = 0;
+        totalScore = 0;
+        gameResults = [];
+
+        document.getElementById("gameStart").classList.remove("hidden");
+        document.getElementById("gamePlay").classList.add("hidden");
+        document.getElementById("gameEnd").classList.add("hidden");
+
+        // Clear any markers
+        if (guessMarker) {
+          gameMap.removeLayer(guessMarker);
+          guessMarker = null;
+        }
+        gameMap.eachLayer((layer) => {
+          if (layer instanceof L.Marker) {
+            gameMap.removeLayer(layer);
+          }
+        });
+
+        gameMap.setView([40.7128, -74.006], 2);
+      }
+
+      // Utility function to calculate distance between two coordinates
+      function calculateDistance(lat1, lng1, lat2, lng2) {
+        const R = 6371; // Radius of the Earth in kilometers
+        const dLat = ((lat2 - lat1) * Math.PI) / 180;
+        const dLng = ((lng2 - lng1) * Math.PI) / 180;
+        const a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos((lat1 * Math.PI) / 180) *
+            Math.cos((lat2 * Math.PI) / 180) *
+            Math.sin(dLng / 2) *
+            Math.sin(dLng / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c;
+        return distance;
+      }
+
+      // Clear all data function
+      function clearAllData() {
+        if (
+          confirm(
+            "Are you sure you want to clear all data? This action cannot be undone."
+          )
+        ) {
+          pictures = [];
+          gameSets = [];
+
+          // Clear localStorage
+          try {
+            localStorage.removeItem("timeguessr_data");
+          } catch (e) {
+            console.warn("Could not clear localStorage");
+          }
+
+          // Update UI
+          updatePicturesList();
+          updateGameSetsList();
+          updateGameSetPictures();
+
+          alert("All data has been cleared successfully.");
+        }
+      }
+
+      // Initialize the app when page loads
+      window.onload = init;
+    </script>
+  
+
+</body></html>

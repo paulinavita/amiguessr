@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F2F 2025 TeamGuessr</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Fridge to Fridge 2025 Teamguessr</h1>
+        <p>Upload photos, set locations & years, then challenge yourself!</p>
+        <p style="color: #e74c3c; font-weight: bold">
+          ⚠️ IMPORTANT: Load your data from a JSON file to get started!
+        </p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('admin')">
+          📋 Admin Panel
+        </button>
+        <button class="tab" onclick="showTab('play')">🎮 Play Game</button>
+        <button class="tab" onclick="showTab('sets')">📚 Game Sets</button>
+      </div>
+
+      <!-- Admin Panel -->
+      <div id="admin" class="tab-content">
+        <div class="admin-section">
+          <h3>📷 Add New Picture</h3>
+          <div class="form-group">
+            <label for="imageUpload">Upload Image:</label>
+            <input type="file" id="imageUpload" accept="image/*" />
+          </div>
+          <div class="form-group">
+            <label for="imageYear">Year (1900-2024):</label>
+            <input
+              type="number"
+              id="imageYear"
+              min="1900"
+              max="2024"
+              placeholder="e.g., 1995"
+            />
+          </div>
+          <div class="form-group">
+            <label for="imageTitle">Title/Description:</label>
+            <input
+              type="text"
+              id="imageTitle"
+              placeholder="e.g., Times Square in the 90s"
+            />
+          </div>
+          <div class="form-group">
+            <label>Click on the map to set location:</label>
+            <div
+              id="adminMap"
+              style="
+                height: 600px;
+                border-radius: 8px;
+                border: 2px solid #e2e8f0;
+              "
+            ></div>
+          </div>
+          <div style="margin-top: 15px">
+            <span id="coordsDisplay">Coordinates: Click on map to select</span>
+          </div>
+          <button class="btn" onclick="addPicture()">➕ Add Picture</button>
+        </div>
+
+        <div class="admin-section">
+          <h3>💾 Save Game Set</h3>
+          <div class="form-group">
+            <label for="gameSetName">Game Set Name:</label>
+            <input
+              type="text"
+              id="gameSetName"
+              placeholder="e.g., Vintage Cities"
+            />
+          </div>
+          <div class="form-group">
+            <label for="gameSetPictures">Select 5 Pictures for Game Set:</label>
+            <select id="gameSetPictures" multiple size="5">
+              <!-- Will be populated dynamically -->
+            </select>
+            <small style="color: #666"
+              >Hold Ctrl/Cmd to select multiple. Select exactly 5
+              pictures.</small
+            >
+          </div>
+          <button class="btn btn-success" onclick="saveGameSet()">
+            💾 Save Game Set
+          </button>
+        </div>
+
+        <div class="admin-section">
+          <h3>💾 Data Management</h3>
+          <div class="form-group">
+            <p style="color: #666; margin-bottom: 15px">
+              This app uses JSON files for data storage. Load your data from a
+              JSON file to get started, and save your data to files to persist
+              your pictures and game sets.
+            </p>
+            <button class="btn" onclick="saveData()">
+              💾 Save Data to File
+            </button>
+            <button class="btn btn-secondary" onclick="loadData()">
+              📁 Load Data from File
+            </button>
+            <button class="btn btn-warning" onclick="clearAllData()">
+              🗑️ Clear All Data
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h3>🔍 Debug Info</h3>
+          <div class="form-group">
+            <p style="color: #666; margin-bottom: 15px">
+              Current data status and debugging information.
+            </p>
+            <div
+              style="
+                background: #f0f0f0;
+                padding: 10px;
+                border-radius: 5px;
+                font-family: monospace;
+              "
+            >
+              <div>Pictures loaded: <span id="debugPicturesCount">0</span></div>
+              <div>
+                Game sets loaded: <span id="debugGameSetsCount">0</span>
+              </div>
+              <div>Last update: <span id="debugLastUpdate">Never</span></div>
+            </div>
+            <button
+              class="btn btn-secondary"
+              onclick="updateDebugInfo()"
+              style="margin-top: 10px"
+            >
+              🔄 Refresh Debug Info
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <h3>📸 Current Pictures</h3>
+          <div id="picturesList" class="picture-list">
+            <!-- Pictures will be displayed here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Play Game -->
+      <div id="play" class="tab-content hidden">
+        <div class="game-container">
+          <div id="gameStart">
+            <h3>🎯 Start New Game</h3>
+            <p>
+              Select 5 pictures to create a random game, or choose a saved game
+              set.
+            </p>
+            <button class="btn" onclick="startRandomGame()">
+              🎲 Random Game 5 pictures)
+            </button>
+          </div>
+
+          <div id="gamePlay" class="hidden">
+            <div class="round-info">
+              <span id="roundCounter">Round 1 of 5</span>
+              <span id="totalScore" style="float: right">Total Score: 0</span>
+            </div>
+
+            <img
+              id="gameImage"
+              class="game-image"
+              alt="Guess this location and year!"
+            />
+
+            <div class="guess-container">
+              <div class="location-guess">
+                <h4>🗺️ Guess the Location</h4>
+                <div id="map"></div>
+                ;
+                <p style="margin-top: 10px; color: #666">
+                  Click on the map to make your guess
+                </p>
+                <div class="year-guess">
+                  <h4>📅 Guess the Year (1990-2025)</h4>
+                  <input
+                    class="year-guess-input"
+                    type="number"
+                    id="yearGuess"
+                    min="1900"
+                    max="2024"
+                    placeholder="Enter year"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <button class="btn" onclick="submitGuess()" id="submitBtn">
+              ✅ Submit Guess
+            </button>
+
+            <div id="roundResults" class="results hidden">
+              <h4>📊 Round Results</h4>
+              <div id="roundScore"></div>
+              <div id="roundDetails"></div>
+              <button class="btn" onclick="nextRound()" id="nextBtn">
+                ➡️ Next Round
+              </button>
+            </div>
+          </div>
+
+          <div id="gameEnd" class="hidden">
+            <div class="score-display">
+              🏆 Final Score: <span id="finalScore">0</span> / 50000
+            </div>
+            <div class="results">
+              <h4>📈 Game Summary</h4>
+              <div id="gameSummary"></div>
+            </div>
+            <button class="btn" onclick="restartGame()">🔄 Play Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Sets -->
+      <div id="sets" class="tab-content hidden">
+        <h3>📚 Saved Game Sets</h3>
+        <div id="gameSetsList">
+          <!-- Game sets will be displayed here -->
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      // Global variables
+      let pictures = [];
+      let gameSets = [];
+      let currentGame = null;
+      let currentRound = 0;
+      let totalScore = 0;
+      let gameResults = [];
+      let adminMap, gameMap;
+      let selectedCoords = null;
+      let guessMarker = null;
+
+      // Initialize the app
+      async function init() {
+        try {
+          await loadData();
+        } catch (error) {
+          console.log(
+            "No data loaded initially - user will need to load a JSON file"
+          );
+          // Initialize with empty data
+          pictures = [];
+          gameSets = [];
+        }
+
+        initMaps();
+        updatePicturesList();
+        updateGameSetsList();
+        updateGameSetPictures();
+        updateDebugInfo();
+      }
+
+      // Data persistence - JSON files only
+      async function saveData() {
+        const data = {
+          pictures: pictures,
+          gameSets: gameSets,
+        };
+
+        try {
+          // Use File System Access API (modern browsers)
+          if ("showSaveFilePicker" in window) {
+            const handle = await window.showSaveFilePicker({
+              suggestedName: "timeguessr_data.json",
+              types: [
+                {
+                  description: "JSON File",
+                  accept: { "application/json": [".json"] },
+                },
+              ],
+            });
+
+            const writable = await handle.createWritable();
+            await writable.write(JSON.stringify(data, null, 2));
+            await writable.close();
+
+            console.log("Data saved to file successfully");
+            alert("✅ Data saved to file successfully!");
+            return;
+          } else {
+            // Fallback: Download as file
+            const blob = new Blob([JSON.stringify(data, null, 2)], {
+              type: "application/json",
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "timeguessr_data.json";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            alert("✅ Data saved as file download!");
+          }
+        } catch (error) {
+          console.error("Error saving data:", error);
+          alert("❌ Error saving data. Please try again.");
+        }
+      }
+
+      async function loadData() {
+        try {
+          // Only use File System Access API (modern browsers)
+          if ("showOpenFilePicker" in window) {
+            try {
+              const [fileHandle] = await window.showOpenFilePicker({
+                types: [
+                  {
+                    description: "JSON File",
+                    accept: { "application/json": [".json"] },
+                  },
+                ],
+              });
+
+              const file = await fileHandle.getFile();
+              const contents = await file.text();
+              console.log("File contents length:", contents.length);
+              console.log(
+                "File contents preview:",
+                contents.substring(0, 200) + "..."
+              );
+
+              const data = JSON.parse(contents);
+              console.log("Parsed file data:", data);
+              console.log("File data.pictures:", data.pictures);
+              console.log("File data.gameSets:", data.gameSets);
+
+              pictures = data.pictures || [];
+              gameSets = data.gameSets || [];
+              console.log("Final pictures array from file:", pictures);
+              console.log("Final gameSets array from file:", gameSets);
+              console.log("Data loaded from file successfully");
+              console.log("Loaded pictures:", pictures);
+              console.log("Loaded game sets:", gameSets);
+              alert(
+                `✅ Data loaded from file successfully!\nLoaded ${pictures.length} pictures and ${gameSets.length} game sets.`
+              );
+
+              // Update UI with a small delay to ensure DOM is ready
+              setTimeout(() => {
+                // Make sure we're on the admin tab to see the updates
+                showTab("admin");
+                updatePicturesList();
+                updateGameSetsList();
+                updateGameSetPictures();
+                updateDebugInfo();
+                console.log("UI updated after file load");
+              }, 100);
+              return;
+            } catch (error) {
+              console.log("File loading cancelled or failed");
+              alert(
+                "❌ Please select a JSON file to load data. No data loaded."
+              );
+              return;
+            }
+          } else {
+            alert(
+              "❌ Your browser doesn't support file loading. Please use a modern browser."
+            );
+            return;
+          }
+        } catch (error) {
+          console.error("Error in loadData:", error);
+          alert("❌ Error loading data. Please try again.");
+          return;
+        }
+      }
+
+      // Initialize maps
+      function initMaps() {
+        // Admin map
+        adminMap = L.map("adminMap").setView([40.7128, -74.006], 2);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap contributors",
+        }).addTo(adminMap);
+
+        adminMap.on("click", function (e) {
+          selectedCoords = e.latlng;
+          document.getElementById(
+            "coordsDisplay"
+          ).textContent = `Coordinates: ${e.latlng.lat.toFixed(
+            6
+          )}, ${e.latlng.lng.toFixed(6)}`;
+
+          if (adminMap.marker) {
+            adminMap.removeLayer(adminMap.marker);
+          }
+          adminMap.marker = L.marker(e.latlng).addTo(adminMap);
+        });
+
+        // Game map
+        gameMap = L.map("map").setView([40.7128, -74.006], 2);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "© OpenStreetMap contributors",
+        }).addTo(gameMap);
+
+        gameMap.on("click", function (e) {
+          if (guessMarker) {
+            gameMap.removeLayer(guessMarker);
+          }
+          guessMarker = L.marker(e.latlng).addTo(gameMap);
+        });
+      }
+
+      // Tab functionality
+      function showTab(tabName) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((tab) => tab.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((content) => content.classList.add("hidden"));
+
+        // Only try to add active class to event.target if it exists (for click events)
+        if (event && event.target) {
+          event.target.classList.add("active");
+        } else {
+          // For programmatic calls, find the tab button and activate it
+          const tabButton = document.querySelector(
+            `[onclick="showTab('${tabName}')"]`
+          );
+          if (tabButton) {
+            tabButton.classList.add("active");
+          }
+        }
+
+        document.getElementById(tabName).classList.remove("hidden");
+
+        // Refresh maps when switching tabs
+        setTimeout(() => {
+          if (tabName === "admin") {
+            adminMap.invalidateSize();
+          } else if (tabName === "play") {
+            gameMap.invalidateSize();
+          }
+        }, 100);
+      }
+
+      // Picture management
+      function addPicture() {
+        const fileInput = document.getElementById("imageUpload");
+        const year = parseInt(document.getElementById("imageYear").value);
+        const title = document.getElementById("imageTitle").value;
+
+        if (!fileInput.files[0] || !year || !title || !selectedCoords) {
+          alert("Please fill all fields and select a location on the map.");
+          return;
+        }
+
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const picture = {
+            id: Date.now(),
+            title: title,
+            year: year,
+            lat: selectedCoords.lat,
+            lng: selectedCoords.lng,
+            image: e.target.result,
+          };
+
+          pictures.push(picture);
+          saveData().then(() => {
+            updatePicturesList();
+            updateGameSetPictures();
+            updateDebugInfo();
+          });
+
+          // Clear form
+          fileInput.value = "";
+          document.getElementById("imageYear").value = "";
+          document.getElementById("imageTitle").value = "";
+          selectedCoords = null;
+          document.getElementById("coordsDisplay").textContent =
+            "Coordinates: Click on map to select";
+          if (adminMap.marker) {
+            adminMap.removeLayer(adminMap.marker);
+          }
+
+          alert("Picture added successfully!");
+        };
+
+        reader.readAsDataURL(file);
+      }
+
+      function deletePicture(id) {
+        if (confirm("Are you sure you want to delete this picture?")) {
+          pictures = pictures.filter((p) => p.id !== id);
+          saveData().then(() => {
+            updatePicturesList();
+            updateGameSetPictures();
+            updateDebugInfo();
+          });
+        }
+      }
+
+      function updatePicturesList() {
+        console.log(
+          "updatePicturesList called with",
+          pictures.length,
+          "pictures"
+        );
+        const container = document.getElementById("picturesList");
+        if (!container) {
+          console.error("picturesList container not found!");
+          return;
+        }
+
+        container.innerHTML = "";
+
+        if (pictures.length === 0) {
+          container.innerHTML =
+            '<p style="color: #666; text-align: center;">No pictures added yet.</p>';
+          console.log("No pictures to display");
+          return;
+        }
+
+        pictures.forEach((picture, index) => {
+          console.log(`Creating picture item ${index}:`, picture.title);
+          const item = document.createElement("div");
+          item.className = "picture-item";
+          item.innerHTML = `
+                    <img src="${picture.image}" alt="${
+            picture.title
+          }" class="picture-preview">
+                    <div class="picture-info">
+                        <strong>${picture.title}</strong><br>
+                        Year: ${picture.year}<br>
+                        Location: ${picture.lat.toFixed(
+                          4
+                        )}, ${picture.lng.toFixed(4)}
+                    </div>
+                    <button class="btn btn-danger" onclick="deletePicture(${
+                      picture.id
+                    })">🗑️ Delete</button>
+                `;
+          container.appendChild(item);
+        });
+
+        console.log(
+          "updatePicturesList completed, added",
+          pictures.length,
+          "items"
+        );
+      }
+
+      function updateGameSetPictures() {
+        console.log(
+          "updateGameSetPictures called with",
+          pictures.length,
+          "pictures"
+        );
+        const select = document.getElementById("gameSetPictures");
+        if (!select) {
+          console.error("gameSetPictures select not found!");
+          return;
+        }
+
+        select.innerHTML = "";
+
+        pictures.forEach((picture, index) => {
+          console.log(`Creating option ${index}:`, picture.title);
+          const option = document.createElement("option");
+          option.value = picture.id;
+          option.textContent = `${picture.title} (${picture.year})`;
+          select.appendChild(option);
+        });
+
+        console.log(
+          "updateGameSetPictures completed, added",
+          pictures.length,
+          "options"
+        );
+      }
+
+      // Game Set management
+      function saveGameSet() {
+        const name = document.getElementById("gameSetName").value;
+        const selectedPictures = Array.from(
+          document.getElementById("gameSetPictures").selectedOptions
+        );
+
+        if (!name || selectedPictures.length !== 5) {
+          alert("Please enter a name and select exactly 5 pictures.");
+          return;
+        }
+
+        const gameSet = {
+          id: Date.now(),
+          name: name,
+          pictureIds: selectedPictures.map((option) => parseInt(option.value)),
+        };
+
+        gameSets.push(gameSet);
+        saveData().then(() => {
+          updateGameSetsList();
+          updateDebugInfo();
+        });
+
+        document.getElementById("gameSetName").value = "";
+        document.getElementById("gameSetPictures").selectedIndex = -1;
+
+        alert("Game set saved successfully!");
+      }
+
+      function deleteGameSet(id) {
+        if (confirm("Are you sure you want to delete this game set?")) {
+          gameSets = gameSets.filter((gs) => gs.id !== id);
+          saveData().then(() => {
+            updateGameSetsList();
+            updateDebugInfo();
+          });
+        }
+      }
+
+      function updateGameSetsList() {
+        console.log(
+          "updateGameSetsList called with",
+          gameSets.length,
+          "game sets"
+        );
+        const container = document.getElementById("gameSetsList");
+        if (!container) {
+          console.error("gameSetsList container not found!");
+          return;
+        }
+
+        container.innerHTML = "";
+
+        if (gameSets.length === 0) {
+          container.innerHTML =
+            '<p style="color: #666; text-align: center;">No game sets saved yet.</p>';
+          console.log("No game sets to display");
+          return;
+        }
+
+        gameSets.forEach((gameSet, index) => {
+          console.log(`Creating game set item ${index}:`, gameSet.name);
+          const item = document.createElement("div");
+          item.className = "game-set-item";
+          item.innerHTML = `
+                    <h4>${gameSet.name}</h4>
+                    <p>5 pictures • Click to play</p>
+                    <div style="margin-top: 10px;">
+                        <button class="btn" onclick="playGameSet(${gameSet.id})">🎮 Play</button>
+                        <button class="btn btn-danger" onclick="deleteGameSet(${gameSet.id})">🗑️ Delete</button>
+                    </div>
+                `;
+          container.appendChild(item);
+        });
+
+        console.log(
+          "updateGameSetsList completed, added",
+          gameSets.length,
+          "items"
+        );
+      }
+
+      // Game logic
+      function startRandomGame() {
+        if (pictures.length < 5) {
+          alert("You need at least 5 pictures to start a game.");
+          return;
+        }
+
+        const shuffled = [...pictures].sort(() => 0.5 - Math.random());
+        currentGame = shuffled.slice(0, 5);
+        initGame();
+      }
+
+      function playGameSet(gameSetId) {
+        const gameSet = gameSets.find((gs) => gs.id === gameSetId);
+        if (!gameSet) return;
+
+        currentGame = gameSet.pictureIds
+          .map((id) => pictures.find((p) => p.id === id))
+          .filter((p) => p);
+
+        if (currentGame.length !== 5) {
+          alert(
+            "Some pictures in this game set are missing. Please recreate the game set."
+          );
+          return;
+        }
+
+        showTab("play");
+        setTimeout(() => gameMap.invalidateSize(), 100);
+        initGame();
+      }
+
+      function initGame() {
+        currentRound = 0;
+        totalScore = 0;
+        gameResults = [];
+
+        document.getElementById("gameStart").classList.add("hidden");
+        document.getElementById("gamePlay").classList.remove("hidden");
+        document.getElementById("gameEnd").classList.add("hidden");
+
+        loadRound();
+      }
+
+      function loadRound() {
+        const picture = currentGame[currentRound];
+
+        document.getElementById("roundCounter").textContent = `Round ${
+          currentRound + 1
+        } of 5`;
+        document.getElementById(
+          "totalScore"
+        ).textContent = `Total Score: ${totalScore}`;
+        document.getElementById("gameImage").src = picture.image;
+        document.getElementById("yearGuess").value = "";
+
+        // Clear previous guess marker
+        if (guessMarker) {
+          gameMap.removeLayer(guessMarker);
+          guessMarker = null;
+        }
+
+        // Reset game map view
+        gameMap.setView([40.7128, -74.006], 2);
+
+        document.getElementById("roundResults").classList.add("hidden");
+        document.getElementById("submitBtn").style.display = "inline-block";
+      }
+
+      function submitGuess() {
+        const yearGuess = parseInt(document.getElementById("yearGuess").value);
+
+        if (!yearGuess || !guessMarker) {
+          alert(
+            "Please enter a year and click on the map to make your location guess."
+          );
+          return;
+        }
+
+        const picture = currentGame[currentRound];
+        const guessCoords = guessMarker.getLatLng();
+
+        // Calculate scores using specified algorithms
+        const yearDiff = Math.abs(yearGuess - picture.year);
+
+        // Year score adjusted for modern photos (2002+) - more forgiving for small errors
+        let yearScore;
+        if (yearDiff === 0) {
+          yearScore = 5000;
+        } else if (yearDiff === 1) {
+          yearScore = 4600; // Only 100 point penalty instead of 50
+        } else if (yearDiff === 2) {
+          yearScore = 4300; // More gradual decline
+        } else if (yearDiff === 3) {
+          yearScore = 4000;
+        } else if (yearDiff === 4) {
+          yearScore = 3700;
+        } else if (yearDiff === 5) {
+          yearScore = 3400; // Better than original 3900
+        } else if (yearDiff >= 6 && yearDiff <= 8) {
+          yearScore = 2400; // Extended range, better score
+        } else if (yearDiff >= 9 && yearDiff <= 12) {
+          yearScore = 2000; // Better than original 2500
+        } else if (yearDiff >= 13 && yearDiff <= 18) {
+          yearScore = 2000; // Extended range
+        } else {
+          yearScore = 0; // Better than original 1000, extended range
+        }
+
+        const distance = calculateDistance(
+          picture.lat,
+          picture.lng,
+          guessCoords.lat,
+          guessCoords.lng
+        );
+        const distanceInMeters = distance * 1000; // Convert km to meters like in the original
+
+        // Distance score using the exact logic from the original code
+        let distanceScore;
+        if (distanceInMeters <= 50) {
+          distanceScore = 5000;
+        } else if (distanceInMeters > 50 && distanceInMeters <= 1000) {
+          distanceScore = 5000 - distanceInMeters * 0.02; // less than 1km min 4980
+        } else if (distanceInMeters > 1000 && distanceInMeters <= 5000) {
+          distanceScore = 4980 - distanceInMeters * 0.016; // less than 5km min 4900
+        } else if (distanceInMeters > 5000 && distanceInMeters <= 100000) {
+          distanceScore = 4900 - distanceInMeters * 0.004; // less than 100km min 4500
+        } else if (distanceInMeters > 100000 && distanceInMeters <= 1000000) {
+          distanceScore = 4500 - distanceInMeters * 0.001; // less than 1000km min 3500
+        } else if (distanceInMeters > 1000000 && distanceInMeters <= 2000000) {
+          distanceScore = 3500 - distanceInMeters * 0.0005; // less than 2000km min 2500
+        } else if (distanceInMeters > 2000000 && distanceInMeters <= 3000000) {
+          distanceScore = 2500 - distanceInMeters * 0.00033333; // less than 3000km min 1500
+        } else if (distanceInMeters > 3000000 && distanceInMeters <= 6000000) {
+          distanceScore = 1500 - distanceInMeters * 0.0002; // less than 6000km min 250
+        } else {
+          distanceScore = 12;
+        }
+
+        const roundScore = Math.round(yearScore + distanceScore);
+        totalScore += roundScore;
+
+        // Store round result
+        gameResults.push({
+          picture: picture,
+          yearGuess: yearGuess,
+          locationGuess: guessCoords,
+          yearScore: Math.round(yearScore),
+          distanceScore: Math.round(distanceScore),
+          roundScore: roundScore,
+          distance: distance,
+          yearDiff: yearDiff,
+        });
+
+        // Show results
+        showRoundResults(
+          picture,
+          guessCoords,
+          yearGuess,
+          roundScore,
+          yearScore,
+          distanceScore,
+          distance,
+          yearDiff
+        );
+      }
+
+      function showRoundResults(
+        picture,
+        guessCoords,
+        yearGuess,
+        roundScore,
+        yearScore,
+        distanceScore,
+        distance,
+        yearDiff
+      ) {
+        document.getElementById("submitBtn").style.display = "none";
+
+        // Add actual location marker
+        const actualMarker = L.marker([picture.lat, picture.lng], {
+          icon: L.icon({
+            iconUrl:
+              "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJDOC4xMyAyIDUgNS4xMyA1IDlDNSAxNC4yNSAxMiAyMiAxMiAyMkMxMiAyMiAxOSAxNC4yNSAxOSA5QzE5IDUuMTMgMTUuODcgMiAxMiAyWk0xMiAxMS41QzEwLjYyIDExLjUgOS41IDEwLjM4IDkuNSA5QzkuNSA3LjYyIDEwLjYyIDYuNSAxMiA2LjVDMTMuMzggNi41IDE0LjUgNy42MiAxNC41IDlDMTQuNSAxMC4zOCAxMy4zOCAxMS41IDEyIDExLjVaIiBmaWxsPSIjRkYwMDAwIi8+Cjwvc3ZnPgo=",
+            iconSize: [24, 24],
+            iconAnchor: [12, 24],
+          }),
+        }).addTo(gameMap);
+
+        // Fit map to show both markers
+        const group = L.featureGroup([guessMarker, actualMarker]);
+        gameMap.fitBounds(group.getBounds(), { padding: [50, 50] });
+
+        const resultsHtml = `
+                <div class="score-display">Round Score: ${roundScore} / 10000</div>
+                <div class="result-item">
+                    <span><strong>Your Year Guess:</strong> ${yearGuess}</span>
+                    <span><strong>Actual Year:</strong> ${picture.year}</span>
+                </div>
+                <div class="result-item">
+                    <span><strong>Year Difference:</strong> ${yearDiff} years</span>
+                    <span><strong>Year Score:</strong> ${Math.round(
+                      yearScore
+                    )} / 5000</span>
+                </div>
+                <div class="result-item">
+                    <span><strong>Distance:</strong> ${distance.toFixed(
+                      0
+                    )} km</span>
+                    <span><strong>Distance Score:</strong> ${Math.round(
+                      distanceScore
+                    )} / 5000</span>
+                </div>
+                <div style="margin-top: 15px; padding: 10px; background: #e6f7ff; border-radius: 5px;">
+                    <strong>${picture.title}</strong><br>
+                    Year: ${picture.year} | Location: ${picture.lat.toFixed(
+          4
+        )}, ${picture.lng.toFixed(4)}
+                </div>
+            `;
+
+        document.getElementById("roundScore").innerHTML = resultsHtml;
+        document.getElementById("roundResults").classList.remove("hidden");
+
+        if (currentRound === 4) {
+          document.getElementById("nextBtn").textContent = "🏁 Finish Game";
+        }
+      }
+
+      function nextRound() {
+        // Remove the actual location marker
+        gameMap.eachLayer((layer) => {
+          if (layer instanceof L.Marker && layer !== guessMarker) {
+            gameMap.removeLayer(layer);
+          }
+        });
+
+        currentRound++;
+
+        if (currentRound >= 5) {
+          endGame();
+        } else {
+          loadRound();
+        }
+      }
+
+      function endGame() {
+        document.getElementById("gamePlay").classList.add("hidden");
+        document.getElementById("gameEnd").classList.remove("hidden");
+
+        document.getElementById("finalScore").textContent = totalScore;
+
+        let summaryHtml = "";
+        gameResults.forEach((result, index) => {
+          summaryHtml += `
+                    <div class="result-item">
+                        <div>
+                            <strong>Round ${index + 1}: ${
+            result.picture.title
+          }</strong><br>
+                            Year: ${result.yearGuess} vs ${
+            result.picture.year
+          } (${result.yearDiff} years off)<br>
+                            Distance: ${result.distance.toFixed(0)} km
+                        </div>
+                        <div>
+                            <strong>${result.roundScore} points</strong><br>
+                            Year: ${result.yearScore} | Location: ${
+            result.distanceScore
+          }
+                        </div>
+                    </div>
+                `;
+        });
+
+        document.getElementById("gameSummary").innerHTML = summaryHtml;
+      }
+
+      function restartGame() {
+        currentGame = null;
+        currentRound = 0;
+        totalScore = 0;
+        gameResults = [];
+
+        document.getElementById("gameStart").classList.remove("hidden");
+        document.getElementById("gamePlay").classList.add("hidden");
+        document.getElementById("gameEnd").classList.add("hidden");
+
+        // Clear any markers
+        if (guessMarker) {
+          gameMap.removeLayer(guessMarker);
+          guessMarker = null;
+        }
+        gameMap.eachLayer((layer) => {
+          if (layer instanceof L.Marker) {
+            gameMap.removeLayer(layer);
+          }
+        });
+
+        gameMap.setView([40.7128, -74.006], 2);
+      }
+
+      // Utility function to calculate distance between two coordinates
+      function calculateDistance(lat1, lng1, lat2, lng2) {
+        const R = 6371; // Radius of the Earth in kilometers
+        const dLat = ((lat2 - lat1) * Math.PI) / 180;
+        const dLng = ((lng2 - lng1) * Math.PI) / 180;
+        const a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos((lat1 * Math.PI) / 180) *
+            Math.cos((lat2 * Math.PI) / 180) *
+            Math.sin(dLng / 2) *
+            Math.sin(dLng / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c;
+        return distance;
+      }
+
+      // Update debug info function
+      function updateDebugInfo() {
+        const picturesCount = document.getElementById("debugPicturesCount");
+        const gameSetsCount = document.getElementById("debugGameSetsCount");
+        const lastUpdate = document.getElementById("debugLastUpdate");
+
+        if (picturesCount) picturesCount.textContent = pictures.length;
+        if (gameSetsCount) gameSetsCount.textContent = gameSets.length;
+        if (lastUpdate)
+          lastUpdate.textContent = new Date().toLocaleTimeString();
+
+        console.log("Debug info updated:", {
+          pictures: pictures.length,
+          gameSets: gameSets.length,
+        });
+      }
+
+      // Clear all data function
+      function clearAllData() {
+        if (
+          confirm(
+            "Are you sure you want to clear all data? This action cannot be undone."
+          )
+        ) {
+          pictures = [];
+          gameSets = [];
+
+          // Update UI
+          updatePicturesList();
+          updateGameSetsList();
+          updateGameSetPictures();
+          updateDebugInfo();
+
+          alert("All data has been cleared successfully.");
+        }
+      }
+
+      // Initialize the app when page loads
+      window.onload = init;
+    </script>
+  </body>
+</html>

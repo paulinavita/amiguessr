@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  color-scheme: light;
+}
+
+.leaflet-container {
+  font: inherit;
+}
+
+.admin-map {
+  height: 28rem;
+}
+
+.play-map {
+  height: 20rem;
+}
+
+@media (max-width: 768px) {
+  .admin-map {
+    height: 20rem;
+  }
+}
