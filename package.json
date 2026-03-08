@@ -2,12 +2,21 @@
   "name": "dummyguessr-next",
   "version": "1.0.0",
   "private": true,
+  "main": "electron/main.js",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
+    "build:web": "next build --webpack",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "electron-builder install-app-deps",
+    "icon:generate": "icon-gen -i assets/logo.png -o build --ico --icns --ico-name icon --icns-name icon && cp assets/logo.png build/icon.png",
+    "electron:dev": "cross-env ELECTRON_DEV=1 concurrently -k \"pnpm dev\" \"wait-on tcp:3000 && electron .\"",
+    "electron:build": "pnpm build:web && electron-builder --dir",
+    "dist:win": "pnpm build:web && electron-builder --win nsis",
+    "dist:mac": "pnpm build:web && electron-builder --mac dmg",
+    "rebuild": "electron-rebuild -f"
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.8",
@@ -29,7 +38,47 @@
     "@types/node": "^25.3.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^40.8.0",
+    "electron-builder": "^26.8.1",
+    "electron-rebuild": "^3.2.9",
+    "icon-gen": "^5.0.0",
     "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wait-on": "^9.0.4"
+  },
+  "build": {
+    "appId": "com.amiguesser.desktop",
+    "productName": "Amiguesser",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "out/**/*",
+      "build/icon.*",
+      "package.json"
+    ],
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.games",
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   }
 }

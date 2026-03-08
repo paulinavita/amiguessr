@@ -14,6 +14,7 @@ export interface Picture {
   lat: number;
   lng: number;
   image: string;
+  imageFileName?: string | null;
 }
 
 export interface GameSet {

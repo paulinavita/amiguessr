@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { AdminTabContent } from "@/components/teamguessr/AdminTabContent";
@@ -36,6 +36,52 @@ function getPickerWindow(): PickerWindow {
   return window as PickerWindow;
 }
 
+function isElectronRuntime(): boolean {
+  return typeof window !== "undefined" && Boolean(window.electronAPI);
+}
+
+function toPersistablePictures(pictures: Picture[]): Picture[] {
+  return pictures.map((picture) => ({
+    ...picture,
+    image: "",
+    imageFileName: picture.imageFileName || null,
+  }));
+}
+
+async function ensureElectronImageFiles(data: GameData): Promise<GameData> {
+  const electronApi = window.electronAPI;
+  if (!electronApi) {
+    return data;
+  }
+
+  const pictures = await Promise.all(
+    (data.pictures || []).map(async (picture) => {
+      if (picture.imageFileName) {
+        return picture;
+      }
+
+      if (!picture.image) {
+        return picture;
+      }
+
+      try {
+        const result = await electronApi.saveImageFromDataUrl({
+          dataUrl: picture.image,
+          pictureId: picture.id,
+        });
+        return { ...picture, imageFileName: result.fileName };
+      } catch {
+        return picture;
+      }
+    }),
+  );
+
+  return {
+    pictures,
+    gameSets: data.gameSets || [],
+  };
+}
+
 export default function HomePage() {
   const game = useTeamguessrGame();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -53,6 +99,8 @@ export default function HomePage() {
     number[]
   >([]);
   const [activeTab, setActiveTab] = useState<TabKey>("admin");
+  const [electronLoaded, setElectronLoaded] = useState(false);
+
   const {
     adminMapElRef,
     gameMapElRef,
@@ -69,6 +117,40 @@ export default function HomePage() {
     defaultZoom: DEFAULT_ZOOM,
   });
 
+  useEffect(() => {
+    async function bootstrapElectronData() {
+      if (!isElectronRuntime()) return;
+      try {
+        const data = await window.electronAPI!.loadAppData();
+        game.loadGameData(data);
+      } catch (error) {
+        console.error(error);
+        toast.error("Could not load local app data.");
+      } finally {
+        setElectronLoaded(true);
+      }
+    }
+
+    void bootstrapElectronData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    async function persistElectronData() {
+      if (!isElectronRuntime() || !electronLoaded) return;
+      try {
+        await window.electronAPI!.saveAppData({
+          pictures: toPersistablePictures(game.pictures),
+          gameSets: game.gameSets,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    void persistElectronData();
+  }, [game.pictures, game.gameSets, electronLoaded]);
+
   function clearRoundMarkersAndState(): void {
     clearRoundMarkers();
     setGuessCoords(null);
@@ -78,6 +160,15 @@ export default function HomePage() {
     const data: GameData = { pictures: game.pictures, gameSets: game.gameSets };
 
     try {
+      if (isElectronRuntime()) {
+        const jsonText = JSON.stringify(data, null, 2);
+        const result = await window.electronAPI!.saveJsonDialog(jsonText);
+        if (!result.canceled) {
+          toast.success("Data exported to JSON.");
+        }
+        return;
+      }
+
       const pickerWindow = getPickerWindow();
       if (pickerWindow.showSaveFilePicker) {
         const handle = await pickerWindow.showSaveFilePicker({
@@ -117,6 +208,23 @@ export default function HomePage() {
 
   async function loadData(): Promise<void> {
     try {
+      if (isElectronRuntime()) {
+        const result = await window.electronAPI!.openJsonDialog();
+        if (result.canceled || !result.text) {
+          return;
+        }
+
+        const raw = JSON.parse(result.text) as GameData;
+        const data = await ensureElectronImageFiles(raw);
+        game.loadGameData(data);
+        setActiveTab("admin");
+        setSelectedGameSetPictureIds([]);
+        toast.success(
+          `Loaded ${(data.pictures || []).length} pictures and ${(data.gameSets || []).length} game sets.`,
+        );
+        return;
+      }
+
       const pickerWindow = getPickerWindow();
       if (!pickerWindow.showOpenFilePicker) {
         toast.error("This browser does not support file picker.");
@@ -157,20 +265,38 @@ export default function HomePage() {
     }
 
     const reader = new FileReader();
-    reader.onload = (e: ProgressEvent<FileReader>) => {
+    reader.onload = async (e: ProgressEvent<FileReader>) => {
       const image = e.target?.result;
       if (typeof image !== "string") {
         toast.error("Invalid image payload.");
         return;
       }
 
+      const pictureId = Date.now();
+      let imageFileName: string | null = null;
+
+      if (isElectronRuntime()) {
+        try {
+          const result = await window.electronAPI!.saveImageFromDataUrl({
+            dataUrl: image,
+            pictureId,
+          });
+          imageFileName = result.fileName;
+        } catch (error) {
+          console.error(error);
+          toast.error("Could not persist image locally.");
+          return;
+        }
+      }
+
       const picture: Picture = {
-        id: Date.now(),
+        id: pictureId,
         title: imageTitle,
         year: parsedYear,
         lat: selectedCoords.lat,
         lng: selectedCoords.lng,
         image,
+        imageFileName,
       };
 
       game.addPicture(picture);
@@ -287,12 +413,21 @@ export default function HomePage() {
     resetGameMapView();
   }
 
-  function handleClearAll(): void {
+  async function handleClearAll(): Promise<void> {
     if (!window.confirm("Clear all data? This cannot be undone.")) return;
 
     game.clearAllData();
     setSelectedGameSetPictureIds([]);
     clearRoundMarkersAndState();
+
+    if (isElectronRuntime()) {
+      try {
+        await window.electronAPI!.clearAppData();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     toast.success("All data cleared.");
   }
 

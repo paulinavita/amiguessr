@@ -57,7 +57,10 @@ export function useLeafletMaps({
     }
     if (adminMapRef.current) return;
 
-    adminMapRef.current = L.map(adminMapElRef.current).setView(defaultView, defaultZoom);
+    adminMapRef.current = L.map(adminMapElRef.current, {
+      zoomSnap: 0.25,
+      minZoom: 1,
+    }).setView(defaultView, defaultZoom);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "© OpenStreetMap contributors",
     }).addTo(adminMapRef.current);
@@ -90,7 +93,10 @@ export function useLeafletMaps({
     }
     if (gameMapRef.current) return;
 
-    gameMapRef.current = L.map(gameMapElRef.current).setView(defaultView, defaultZoom);
+    gameMapRef.current = L.map(gameMapElRef.current, {
+      zoomSnap: 0.25,
+      minZoom: 1,
+    }).setView(defaultView, defaultZoom);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: "© OpenStreetMap contributors",
     }).addTo(gameMapRef.current);

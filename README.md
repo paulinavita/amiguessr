@@ -1,51 +1,89 @@
-# F2F 2025 TeamGuessr (Next.js)
+# Amiguesser (Next.js + Electron)
 
-This repository now runs as a Next.js frontend app.
+Desktop geography/year guessing game built with Next.js and packaged with Electron.
 
-## Tech
+## Stack
 
-- Next.js (App Router)
-- React
-- Leaflet + OpenStreetMap tiles
-- JSON file import/export for game data
+- Next.js (App Router, TypeScript)
+- Electron (secure preload + IPC)
+- Leaflet + OpenStreetMap
+- shadcn-style UI primitives
+
+## Persistence Model
+
+In Electron mode (`.exe` / `.dmg`):
+
+- Game data is stored in the user app data directory (`app.getPath('userData')/data/timeguessr_data.json`).
+- Images are saved as files in `app.getPath('userData')/data/images`.
+- Data and images persist across app restarts and are not removed when the app closes.
+- Data is retained as long as files remain on disk and user storage has capacity.
+
+In browser mode:
+
+- JSON import/export fallback is still available.
 
 ## Project Structure
 
-- `app/page.js`: Main game UI and all client-side game logic
-- `app/layout.js`: Root layout and metadata
-- `app/globals.css`: Global styles (includes Leaflet CSS import)
-- `public/assets/`: Existing sample/exported assets copied for static hosting
-- `f2f-teamguessr.html`, `dummy.js`, `style.css`: legacy static version kept for reference
+- `app/`: Next.js renderer UI
+- `components/teamguessr/`: tab UI components (`Admin`, `Play`, `Sets`)
+- `hooks/use-teamguessr-game.ts`: game business logic
+- `hooks/use-leaflet-maps.ts`: Leaflet lifecycle + marker orchestration
+- `electron/main.js`: Electron main process and IPC handlers
+- `electron/preload.js`: secure renderer bridge
+- `types/electron.d.ts`: typed `window.electronAPI`
 
-## Run Locally
-
-1. Install dependencies:
+## Install
 
 ```bash
 pnpm install
 ```
 
-2. Start dev server:
+## Web Dev
 
 ```bash
 pnpm dev
 ```
 
-3. Open:
-
-```text
-http://localhost:3000
-```
-
-## Build
+## Electron Dev
 
 ```bash
-pnpm build
-pnpm start
+pnpm electron:dev
 ```
 
-## Notes
+## Build Web (static export)
 
-- Data is still loaded/saved as JSON from the browser.
-- The app uses File System Access API when available, with download fallback.
-- The game logic and scoring were ported from the original static page.
+```bash
+pnpm build:web
+```
+
+## Package Desktop App
+
+Generate platform icons from `assets/logo.png` first:
+
+```bash
+pnpm icon:generate
+```
+
+Windows `.exe`:
+
+```bash
+pnpm dist:win
+```
+
+macOS `.dmg`:
+
+```bash
+pnpm dist:mac
+```
+
+Unpacked Electron build:
+
+```bash
+pnpm electron:build
+```
+
+## Rebuild Native Modules
+
+```bash
+pnpm rebuild
+```

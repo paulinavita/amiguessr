@@ -32,7 +32,7 @@ interface AdminTabContentProps {
   onSaveGameSet: () => void;
   onSaveData: () => void;
   onLoadData: () => void;
-  onClearAll: () => void;
+  onClearAll: () => void | Promise<void>;
   onRefreshDebug: () => void;
   onDeletePicture: (pictureId: number) => void;
 }
@@ -60,6 +60,8 @@ export function AdminTabContent({
   onRefreshDebug,
   onDeletePicture,
 }: AdminTabContentProps) {
+  const isDev = process.env.NODE_ENV === "development";
+
   return (
     <div className="space-y-4">
       <Card>
@@ -163,19 +165,21 @@ export function AdminTabContent({
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>🔍 Debug Info</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3 text-sm text-slate-600">
-          <p>Pictures loaded: {pictures.length}</p>
-          <p>Game sets loaded: {gameSets.length}</p>
-          <p>Last update: {debugLastUpdate}</p>
-          <Button variant="outline" size="sm" onClick={onRefreshDebug}>
-            <RefreshCcw className="h-4 w-4" /> Refresh
-          </Button>
-        </CardContent>
-      </Card>
+      {isDev && (
+        <Card>
+          <CardHeader>
+            <CardTitle>🔍 Debug Info</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm text-slate-600">
+            <p>Pictures loaded: {pictures.length}</p>
+            <p>Game sets loaded: {gameSets.length}</p>
+            <p>Last update: {debugLastUpdate}</p>
+            <Button variant="outline" size="sm" onClick={onRefreshDebug}>
+              <RefreshCcw className="h-4 w-4" /> Refresh
+            </Button>
+          </CardContent>
+        </Card>
+      )}
 
       <Card>
         <CardHeader>

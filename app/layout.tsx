@@ -5,8 +5,9 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "F2F 2025 TeamGuessr",
-  description: "Upload photos, set locations and years, then play guessing rounds.",
+  title: "Amiguessr",
+  description:
+    "Upload photos, set locations and years, then play guessing rounds.",
 };
 
 export default function RootLayout({

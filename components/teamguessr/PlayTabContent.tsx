@@ -118,12 +118,19 @@ export function PlayTabContent({
                 {gameResults.map((result, idx) => (
                   <div
                     key={`${result.picture.id}-${idx}`}
-                    className="rounded-lg border border-slate-200 p-3 text-sm"
+                    className="flex items-start justify-between gap-3 rounded-lg border border-slate-200 p-3 text-sm"
                   >
-                    <p className="font-semibold">Round {idx + 1}: {result.picture.title}</p>
-                    <p>Year: {result.yearGuess} vs {result.picture.year}</p>
-                    <p>Distance: {result.distance.toFixed(0)} km</p>
-                    <p>Score: {result.roundScore}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-semibold">Round {idx + 1}: {result.picture.title}</p>
+                      <p>Year: {result.yearGuess} vs {result.picture.year}</p>
+                      <p>Distance: {result.distance.toFixed(0)} km</p>
+                      <p>Score: {result.roundScore}</p>
+                    </div>
+                    <img
+                      src={result.picture.image}
+                      alt={`Round ${idx + 1} reference`}
+                      className="h-16 w-24 shrink-0 rounded-md object-cover"
+                    />
                   </div>
                 ))}
               </div>
