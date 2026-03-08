@@ -89,3 +89,10 @@ pnpm electron:build
 ```bash
 pnpm rebuild
 ```
+
+## Misc
+Gameplay:
+1. Choose 5 images of your mates, pick the location, give the image description and enter the year
+2. Group them into a set. Create few sets if it's a competition
+3. Once it's grouped, go to the Play tab and pick the game set that you want
+4. Take notes of the score and see who's winning!
