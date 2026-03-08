@@ -1,5 +1,7 @@
 # Amiguesser (Next.js + Electron)
 
+<img src="assets/logo.png" alt="Amiguesser Logo" width="50%" />
+
 Desktop geography/year guessing game built with Next.js and packaged with Electron.
 
 ## Stack
